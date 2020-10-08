@@ -6,7 +6,7 @@ const InventoryDetail = () => {
 
 
     return(
-      <div className="TBD">
+      <div className="item">
 
       <div className="itemName">
          {/* {props.brand}  {props.model}  */}
@@ -19,10 +19,10 @@ const InventoryDetail = () => {
       </div>
 
 
-      <div className="itemPhoto">
+      <div>
         {/* <img src={props.gear_photo_url}/> */}
-        <img src={
-        'https://www.blackdiamondequipment.com/on/demandware.static/-/Sites-bdel/default/dwde1f0a5f/products/F18_Product_Images/Equipment/681185_CBBK_Cobalt_Black_Mission75_Frnt.jpg'} height={200} width={200}/>
+        <img className="itemPhoto" src={
+        'https://www.blackdiamondequipment.com/on/demandware.static/-/Sites-bdel/default/dwde1f0a5f/products/F18_Product_Images/Equipment/681185_CBBK_Cobalt_Black_Mission75_Frnt.jpg'} />
       </div>
       
       <div className="itemDescription">
