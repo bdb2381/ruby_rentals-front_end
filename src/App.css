@@ -52,9 +52,9 @@
   text-align: center;
   border-radius: 10px;
   border-style: solid;
-  background: #ee8181;
-  padding: .5rem;
-  width: 15rem;
+  background: #e1dbdb;
+  padding: 0 0 .5rem;
+  width: 16rem;
   height: max-content;
   display: inline-grid;
   margin: 1rem 2rem;  
@@ -63,22 +63,32 @@
 
 .card .itemPhoto {
   justify-self: center;
-  height: 75%;
-  width: 75%;
-  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
 }
 .card .itemContent {
   /* background:#EDB668; */
   word-wrap: break-word;
-  font-size: 3em;
-  padding: .3em;
+  /* font-size: 3em; */
+  padding: .5em;
+  text-align: center;
+
 }
 .card .brand {
-  font-size: 20px;
-  height: auto;
-  text-align: center;
-  padding: 10px;
+  font-size: 1.7em;
+  padding-bottom: .5em;
+}
+
+.card .model{
+  font-size: 1.8em;
   font-weight: bolder;
+  padding-bottom: .5em;
+}
+
+.card .category{
+  font-size: 1.3em;
+  padding: .5em;
 }
 
 /*******************/

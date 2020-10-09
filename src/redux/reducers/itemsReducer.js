@@ -25,7 +25,7 @@ const initialState = {
 
 
 ////////////////
-// Rducer w/ switch statements to cause state to change
+// Reducer w/ switch statements to cause state to change
 
 export default function itemsReducer(state = initialState, action) {
   switch (action.type) {

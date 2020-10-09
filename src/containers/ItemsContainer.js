@@ -10,7 +10,6 @@ import {getItems} from '../redux/fetchActions'
 class ItemsContainer extends React.Component {
 
   componentDidMount = () => { 
-    // api.items.getItems().then(response =>console.log(response) )
      this.props.getItems()
   }
   
@@ -20,8 +19,10 @@ class ItemsContainer extends React.Component {
     return(
       <div>
         ItemsContainers
-        allItems.map 
-        <ItemCard />
+       { this.props.allItems.map((item) =>( 
+          <ItemCard key={item.id} item={item} />
+        )
+        )} 
         <InventoryDetail/> 
       </div>
     
@@ -40,7 +41,7 @@ const mapDispatchToProps = (dispatch ) => {
 
 
 const mapStateToProps = (state) => {
-  console.log(state)
+  // console.log(state)
   return {allItems: state.itemsReducer.allItems }
 
 }
