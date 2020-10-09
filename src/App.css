@@ -3,6 +3,9 @@
   font-family: monospace;
 }
 
+/*******************/
+/*******************/
+/* ITEM INVENTORY COMPONENT*/
 .item {
   background: #b3aeae;
   /* border-radius: 10px; */
@@ -37,6 +40,50 @@
   padding: 6px;
   /* display: block; */
 }
+
+
+/*******************/
+/*******************/
+/* DISPLAY ITEM CARD */
+
+.card {
+  cursor: pointer;
+  /* changes pointer for clickable objects */
+  text-align: center;
+  border-radius: 10px;
+  border-style: solid;
+  background: #ee8181;
+  padding: .5rem;
+  width: 15rem;
+  height: max-content;
+  display: inline-grid;
+  margin: 1rem 2rem;  
+  /* color: #1a436b; */
+}
+
+.card .itemPhoto {
+  justify-self: center;
+  height: 75%;
+  width: 75%;
+  border-radius: 10px;
+}
+.card .itemContent {
+  /* background:#EDB668; */
+  word-wrap: break-word;
+  font-size: 3em;
+  padding: .3em;
+}
+.card .brand {
+  font-size: 20px;
+  height: auto;
+  text-align: center;
+  padding: 10px;
+  font-weight: bolder;
+}
+
+/*******************/
+
+
 
 
 /* 

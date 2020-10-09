@@ -1,6 +1,6 @@
 import React from "react";
 import InventoryDetail from '../components/inventoryDetail/InventoryDetail.js'
-
+import ItemCard from '../components/ItemCard/ItemCard.js'
 
 
 class ItemsContainer extends React.Component {
@@ -8,7 +8,11 @@ class ItemsContainer extends React.Component {
 
   render (){
     return(
-    <InventoryDetail/> 
+      <div>
+        ItemsContainers
+        <ItemCard/>
+        <InventoryDetail/> 
+      </div>
     
     
     
