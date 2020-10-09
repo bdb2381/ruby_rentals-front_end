@@ -7,6 +7,13 @@ import ItemsContainer from './containers/ItemsContainer.js'
 
 class App extends React.Component {
   
+
+
+  componentDidMount(){
+    
+
+  }
+
   render() {
     return (
       <div className="App">

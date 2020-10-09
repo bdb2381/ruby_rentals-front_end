@@ -10,15 +10,6 @@ import * as serviceWorker from './serviceWorker';
 
 const rootElement = document.getElementById("root");
 
-const initialState = {
-  count: 0,
-  items: {}
-} 
-
-const reducer = (state=initialState, action) => {
-
-}
-
 
 
 ReactDOM.render(
