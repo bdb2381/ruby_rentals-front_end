@@ -21,11 +21,11 @@ class App extends React.Component {
           <Router>
             <Link to="/">Home</Link> 
             <Link to="/gear">Gear</Link> 
-            <Link to="/reservation">Reservation</Link>
-                <ItemsContainer/>   
-
-            <Route path="/reservation">     <ReservationContainer/>
-            </Route>
+            <ItemsContainer/>   
+          
+            {/* <Link to="/reservation">Reservation</Link> */}  
+            {/* <Route path="/reservation">     <ReservationContainer/> */}
+            {/* </Route> */}
           </Router>
         </div>
     );

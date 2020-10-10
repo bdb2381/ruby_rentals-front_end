@@ -25,12 +25,11 @@ const InventoryDetail = (props) => {
 
         <div className="itemName">
           {brand}  {model} 
-            {/* Black Diamond Mission 55 */}
         </div>
 
         <div className="itemPrice">
-          Price {day_rental_price}/day 
-          Price $30/day
+          Price ${day_rental_price}/day 
+          
         </div>
 
 
@@ -44,7 +43,7 @@ const InventoryDetail = (props) => {
       </div> 
 
       <div className="reservation-container">
-        <ReservationContainer/>
+        <ReservationContainer   />
       </div>
     
 

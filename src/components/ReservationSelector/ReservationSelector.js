@@ -8,19 +8,44 @@ class ReservationSelector extends React.Component {
   
   handleChange(event) {
     console.log(event)
-    // this.setState({value: event.target.value});
+    // let name = event.target.name
+    // let value = event.target.value
+
+    // this.setState((prevState) => ({
+    //   item: {
+    //     ...prevState.item,
+    //     [name]: value,
+    //   },
+    // }));
   }
   
   handleSubmit(event) {
+    event.preventDefault()
     console.log(event)
-    event.preventDefault();
   }
 
-render(){
+  
+  
+  filterItems = () =>{
+
+    return console.log(this.props.allItems)
+  }
+  
+
+  
+  
+  render(){
+    // console.log(this.props.allItems)
   return(
     <div className="reservation-container">
-    {/* <form onSubmit={this.handleSubmit()}> */}
-    <form >
+
+
+{this.filterItems()}
+
+
+
+    
+    <form onSubmit={this.handleSubmit}>
 
       <div className="datePicker"> 
         Pickup Date
@@ -37,17 +62,17 @@ render(){
       <div className="reservationDropdown">
           <label>
             Pick your favorite flavor:
-            {/* <select value={this.state.value} onChange={this.handleChange}> */}
-            <select >
-              <option value="grapefruit">Grapefruit</option>
-              <option value="lime">Lime</option>
-              <option value="coconut">Coconut</option>
-              <option value="mango">Mango</option>
+            {/* <select value={value} onChange={hhandleChange}> */}
+            <select onChange={this.handleChange}>
+              <option name="grapefruit" value="grapefruit">Grapefruit</option>
+              <option name="" value="lime">Lime</option>
+              <option name="" value="coconut">Coconut</option>
+              <option name="" value="mango">Mango</option>
             </select>
           </label>
       </div>
       <div>
-        <input type="submit" name="submit" value="Submit Reservation" id="submit"  />
+        <input type="submit" name="submit" value="Submit Reservation" id="submit" />
       </div>
     
     </form>
@@ -60,8 +85,11 @@ render(){
 }
 // export default connect(mapStateToProps, mapStateToProps)(ReservationSelector)
 
-export default ReservationSelector
 
-// const mapStateToProps = (state) => {}
-
+const mapStateToProps = (state) => {
+  // console.log(state)
+  return {allItems: state.itemsReducer.allItems }
+  
+}
+export default connect(mapStateToProps)( ReservationSelector)
 // const mapDispatchToProps = (dispatch) => {}
