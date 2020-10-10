@@ -5,11 +5,13 @@
 
 /*******************/
 /*******************/
-/* ITEM INVENTORY COMPONENT*/
+/* INDIVIDUAL ITEM DETAILS/INVENTORY COMPONENT*/
 .item {
-  background: #b3aeae;
+  /* background: #b3aeae; */
   /* border-radius: 10px; */
   padding: 8px;
+  width: 40rem;
+
 }
 
 
@@ -46,6 +48,12 @@
 /*******************/
 /* DISPLAY ITEM CARD */
 
+.card-container{
+  margin: 1rem 1rem;
+  display: inline-grid;
+
+}
+
 .card {
   cursor: pointer;
   /* changes pointer for clickable objects */
@@ -56,7 +64,7 @@
   padding: 0 .8em .5rem;
   width: 16rem;
   height: max-content;
-  display: inline-grid;
+  /* display: inline-grid; */
   margin: 1rem 2rem;  
   /* color: #1a436b; */
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import ItemCard from '../components/ItemCard/ItemCard.js'
-
+import {connect} from 'react-redux'
 
 const ItemsList = (props) => { 
   console.log(props, "insideItemsList")
@@ -10,8 +10,7 @@ const ItemsList = (props) => {
   //   <ItemCard key={item.id} item={item} match={match} />
   // )})
 
-
-  const items = props.items.map((item) =>  ( 
+  const items = props.allItems.map((item) =>  ( 
     <ItemCard key={item.id} item={item}  />)
   )
 
@@ -25,4 +24,12 @@ const ItemsList = (props) => {
 
 }
 
-export default ItemsList
+const mapStateToProps = (state) => {
+  // console.log(state)
+  return {allItems: state.itemsReducer.allItems }
+
+}
+
+
+
+export default connect(mapStateToProps)(ItemsList)

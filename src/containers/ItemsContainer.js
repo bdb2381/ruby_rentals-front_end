@@ -54,9 +54,9 @@ Text to show if something renders
              
 
 
-
+             {/* items={this.props.allItems} */}
           <Route path="/gear" render={() => {
-            return  <ItemsList items={this.props.allItems} />}
+            return <ItemsList/>}
           }/>      
         </Switch>
           
