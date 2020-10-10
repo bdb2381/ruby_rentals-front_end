@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from 'react-redux'
 import {getItems} from '../redux/fetchActions'
-import { Route, Switch, Link  } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import InventoryDetail from '../components/inventoryDetail/InventoryDetail.js'
 import ItemsList from '../components/ItemsList.js'
@@ -61,15 +61,13 @@ Text to show if something renders
         </Switch>
           
      
-    </div>
-    
-    
-    
+    </div> // end container div 
     ) // end return
   } // end render
 } // end class 
  
 
+// get each item from the store
 const mapDispatchToProps = (dispatch ) => {
   return {getItems: () => dispatch(getItems())}
 }
