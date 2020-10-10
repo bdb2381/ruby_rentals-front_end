@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ReservationContainer from '../../containers/ReservationContainer.js'
+
 const InventoryDetail = (props) => {
   const {id, brand, model, day_rental_price, gear_photo_url, size, description} = props.item
   console.log(props)
@@ -17,27 +19,34 @@ const InventoryDetail = (props) => {
   const altImageTag = `${brand} ${model} ${size} photo`
 
     return(
+      <div> 
+
       <div className="item">
 
-      <div className="itemName">
-         {brand}  {model} 
-          {/* Black Diamond Mission 55 */}
-      </div>
+        <div className="itemName">
+          {brand}  {model} 
+            {/* Black Diamond Mission 55 */}
+        </div>
 
-      <div className="itemPrice">
-        Price {day_rental_price}/day 
-        Price $30/day
-      </div>
+        <div className="itemPrice">
+          Price {day_rental_price}/day 
+          Price $30/day
+        </div>
 
 
-      <div>
-        <img className="itemPhoto" src={gear_photo_url} alt={altImageTag} />
-      </div>
-      
-      <div className="itemDescription">
-        {description}
-      </div>
+        <div>
+          <img className="itemPhoto" src={gear_photo_url} alt={altImageTag} />
+        </div>
+        
+        <div className="itemDescription">
+          {description}
+        </div>
+      </div> 
 
+      <div className="reservation-container">
+        <ReservationContainer/>
+      </div>
+    
 
 
 

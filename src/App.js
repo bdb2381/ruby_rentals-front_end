@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import ItemsContainer from './containers/ItemsContainer.js'
+import ReservationContainer from './containers/ReservationContainer.js'
 
 class App extends React.Component {
   
@@ -18,11 +19,13 @@ class App extends React.Component {
     return (
       <div className="App">
           <Router>
-      <Link to="/">Home</Link> 
-      <Link to="/gear">Gear</Link> 
-      
-            <ItemsContainer/>   
+            <Link to="/">Home</Link> 
+            <Link to="/gear">Gear</Link> 
+            <Link to="/reservation">Reservation</Link>
+                <ItemsContainer/>   
 
+            <Route path="/reservation">     <ReservationContainer/>
+            </Route>
           </Router>
         </div>
     );

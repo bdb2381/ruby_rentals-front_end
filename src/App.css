@@ -11,6 +11,7 @@
   /* border-radius: 10px; */
   padding: 8px;
   width: 40rem;
+  display: inline-grid;
 
 }
 
@@ -110,8 +111,10 @@
   display: inline-grid;
 }
 
-.reservation{
-  
+.datePicker{
+  margin: 1rem 1rem;
+  display: inline-grid;
+  font-size: 1.4em;
 }
 
 

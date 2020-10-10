@@ -5,8 +5,9 @@ import { Route, Switch } from "react-router-dom";
 
 import InventoryDetail from '../components/inventoryDetail/InventoryDetail.js'
 import ItemsList from '../components/ItemsList.js'
+
 // import api from '../services/api.js'
-import ItemCard from '../components/ItemCard/ItemCard.js'
+// import ItemCard from '../components/ItemCard/ItemCard.js'
 
 
 class ItemsContainer extends React.Component {
