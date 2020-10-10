@@ -107,8 +107,9 @@
 
 
 .reservation-container{
-  margin: 1rem 1rem;
+  margin: 1em 1em;
   display: inline-grid;
+  border: solid;
 }
 
 .datePicker{
@@ -117,7 +118,22 @@
   font-size: 1.4em;
 }
 
+.reservationDropdown{
+  margin: 1em ;
+}
 
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #e6c611;
+  border: none;
+  font-size: 1.5em;
+  color: black;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+}
 
 
 

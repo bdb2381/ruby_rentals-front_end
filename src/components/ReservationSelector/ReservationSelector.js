@@ -2,39 +2,62 @@ import React, { useState } from 'react'
 import {connect} from 'react-redux'
 
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
-
-const ReservationSelector = () => {
-   const [startDate, setStartDate] = useState(new Date());
+class ReservationSelector extends React.Component {
+ 
   
-   const [endDate, setEndDate] = useState(new Date());
+  handleChange(event) {
+    console.log(event)
+    // this.setState({value: event.target.value});
+  }
   
+  handleSubmit(event) {
+    console.log(event)
+    event.preventDefault();
+  }
 
-  console.log(startDate)
-
+render(){
   return(
-    <div>
+    <div className="reservation-container">
+    {/* <form onSubmit={this.handleSubmit()}> */}
+    <form >
 
-    <div className="datePicker"> 
-    Pickup Date
-      <DatePicker 
-      selected={startDate} 
-      onChange={date => setStartDate(date)} />
-    </div>
-    <div className="datePicker">
-      Return Date
-      <DatePicker 
-      selected={endDate} 
-      onChange={date => setEndDate(date)} />
-    </div>
+      <div className="datePicker"> 
+        Pickup Date
+        <input 
+          type="date" name="startDate" value="startDate"/>
+      </div>
 
-    </div>
+      <div className="datePicker">
+        Return Date
+        <input 
+          type="date" name="returnDate" value="returnDate"/>
+      </div>
+
+      <div className="reservationDropdown">
+          <label>
+            Pick your favorite flavor:
+            {/* <select value={this.state.value} onChange={this.handleChange}> */}
+            <select >
+              <option value="grapefruit">Grapefruit</option>
+              <option value="lime">Lime</option>
+              <option value="coconut">Coconut</option>
+              <option value="mango">Mango</option>
+            </select>
+          </label>
+      </div>
+      <div>
+        <input type="submit" name="submit" value="Submit Reservation" id="submit"  />
+      </div>
+    
+    </form>
+
+    </div> // end wrapper div 
 
 
   ) // end return
-} // end reservationSelector
+} // end ReservationSelector
+}
 // export default connect(mapStateToProps, mapStateToProps)(ReservationSelector)
 
 export default ReservationSelector
