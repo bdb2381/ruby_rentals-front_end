@@ -1,41 +1,64 @@
 import React from "react";
-import InventoryDetail from '../components/inventoryDetail/InventoryDetail.js'
-import ItemCard from '../components/ItemCard/ItemCard.js'
-import api from '../services/api.js'
 import {connect} from 'react-redux'
 import {getItems} from '../redux/fetchActions'
-import { Route, useRouteMatch, Link, Switch  } from "react-router-dom";
+import { Route, Switch, Link  } from "react-router-dom";
 
+import InventoryDetail from '../components/inventoryDetail/InventoryDetail.js'
+import ItemsList from '../components/ItemsList.js'
+// import api from '../services/api.js'
+import ItemCard from '../components/ItemCard/ItemCard.js'
 
-// <Link to={`/gear/${item.id}`}></Link>
 
 class ItemsContainer extends React.Component {
 
   
   componentDidMount = () => { 
     this.props.getItems()
+
+    // returns as this.props.allItems
   }
   
  
   
-  render (match){
-    
+  render (){
+    console.log(this.props.allItems, "top of render")
+
     return (
-    <div> 
+      <div> 
+   
+          
+                
+          {/* console.log(match.params.gearId), */}
+Text to show if something renders 
 
 
-      { this.props.allItems.map((item) =>(  
-        <Link to={`/gear/${item.id}`}>
-          <ItemCard key={item.id} item={item} match={match} />
-        </Link>
-        
-        ))} 
-        <Route exact={true} path={`/gear/:gearId`} render={({match}) =>( 
-          console.log(match.params.gearId),
-          <InventoryDetail
-          id={parseInt(match.params.gearId)} 
-          />
-        )}/>
+        {/* { this.props.allItems.map((item) =>(  
+           <Link exact to={`/gear/${item.id}`}>
+              <ItemCard key={item.id} item={item} />
+          </Link>
+        ))}  */}
+              
+        <Switch>
+          <Route exact path="/gear/:gearId" render={(routerProps) =>{ 
+            
+            const gearId = routerProps.match.params.gearId
+            const item = this.props.allItems.find(i => i.id === parseInt(gearId))
+            return item ? <InventoryDetail item={item} /> : "Loading..."
+          }}/>
+
+        {/* { this.props.allItems.map((item) =>(  
+           <Link exact to={`/gear/${item.id}`}>
+              <ItemCard key={item.id} item={item} />
+          </Link>
+        ))}  */}
+             
+
+
+
+          <Route path="/gear" render={() => {
+            return  <ItemsList items={this.props.allItems} />}
+          }/>      
+        </Switch>
           
      
     </div>
@@ -44,8 +67,6 @@ class ItemsContainer extends React.Component {
     
     ) // end return
   } // end render
-
-
 } // end class 
  
 

@@ -9,39 +9,24 @@ import {
 
 import ItemsContainer from './containers/ItemsContainer.js'
 
-
-
 class App extends React.Component {
   
-
-
   componentDidMount(){
-
   }
 
   render() {
     return (
-      <Router>
-        <Link to="/">Home</Link> |
-        <Link to="/gear">Gear</Link> 
-        
-        <div className="App">
-          <Switch>
-            <Route exact path="/">
-              <home/>
-            </Route>
-            <Route path="/gear">
-              <ItemsContainer/>   
-            </Route>
-       
-          </Switch>
-       
-       
+      <div className="App">
+          <Router>
+      <Link to="/">Home</Link> 
+      <Link to="/gear">Gear</Link> 
+      
+            <ItemsContainer/>   
+
+          </Router>
         </div>
-      </Router>
     );
   }
-
 }
 
 export default App;

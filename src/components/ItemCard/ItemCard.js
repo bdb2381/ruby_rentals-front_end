@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 const ItemCard = (props) => {
@@ -9,6 +10,7 @@ const altImageTag = `${brand} ${model} ${size} ${item_type} photo`
 return (
   <div>
     
+    <Link exact to={`/gear/${id}`}>
     <div className="card" id={id}>
       <div>
         <img className="itemPhoto" src={gear_photo_url} alt={altImageTag}/>
@@ -24,8 +26,8 @@ return (
            {item_type} | ${day_rental_price}/day
         </div>
       </div>
-
       </div>
+    </Link>
     
 
   </div> // closing return div
