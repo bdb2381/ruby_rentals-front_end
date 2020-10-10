@@ -1,8 +1,8 @@
 import React from 'react';
 
-const InventoryDetail = () => {
-
-
+const InventoryDetail = (props) => {
+  // const {id, item} = props
+  // console.log(item)
 
 
     return(

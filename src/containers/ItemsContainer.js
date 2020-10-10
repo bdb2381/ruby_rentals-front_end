@@ -4,27 +4,41 @@ import ItemCard from '../components/ItemCard/ItemCard.js'
 import api from '../services/api.js'
 import {connect} from 'react-redux'
 import {getItems} from '../redux/fetchActions'
+import { Route, useRouteMatch, Link, Switch  } from "react-router-dom";
 
 
+// <Link to={`/gear/${item.id}`}></Link>
 
 class ItemsContainer extends React.Component {
 
+  
   componentDidMount = () => { 
-     this.props.getItems()
+    this.props.getItems()
   }
   
+ 
   
-  render (){
-  console.log(this.props.allItems)
-    return(
-      <div>
-        ItemsContainers
-       { this.props.allItems.map((item) =>( 
-          <ItemCard key={item.id} item={item} />
-        )
-        )} 
-        <InventoryDetail/> 
-      </div>
+  render (match){
+    
+    return (
+    <div> 
+
+
+      { this.props.allItems.map((item) =>(  
+        <Link to={`/gear/${item.id}`}>
+          <ItemCard key={item.id} item={item} match={match} />
+        </Link>
+        
+        ))} 
+        <Route exact={true} path={`/gear/:gearId`} render={({match}) =>( 
+          console.log(match.params.gearId),
+          <InventoryDetail
+          id={parseInt(match.params.gearId)} 
+          />
+        )}/>
+          
+     
+    </div>
     
     
     

@@ -2,15 +2,16 @@ import React from 'react'
 
 
 const ItemCard = (props) => {
- const {id, brand, model, size, gear_photo_url, item_type, day_rental_price, }=props.item 
-  console.log(gear_photo_url)
+ const {id, brand, model, size, gear_photo_url, item_type, day_rental_price, } = props.item 
+ 
+const altImageTag = `${brand} ${model} ${size} ${item_type} photo`
 
 return (
   <div>
     
-    <div className="card">
+    <div className="card" id={id}>
       <div>
-        <img className="itemPhoto" src={gear_photo_url} alt="gear photo"/>
+        <img className="itemPhoto" src={gear_photo_url} alt={altImageTag}/>
       </div>
       <div className="itemContent">
         <div className="brand">
@@ -19,19 +20,16 @@ return (
         <div className="model">
           {model} {size}
         </div>
-        <div className="category">
-           {item_type}
+        <div className="category_price">
+           {item_type} | ${day_rental_price}/day
         </div>
       </div>
 
       </div>
     
 
-  </div> // closing div
-
+  </div> // closing return div
 )
-
-
 
 } // end ItemCard
 
