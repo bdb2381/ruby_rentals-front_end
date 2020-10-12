@@ -67,6 +67,5 @@ export default function itemsReducer(state = initialState, action) {
 
 
   } // end switch
-
 } // end function
 

@@ -3,6 +3,14 @@ import {connect} from 'react-redux'
 
 
 
+// finish adding addToCar redux flow. Action of addItemToCart(item) is written plus reducer with itemsInCart state
+
+// need to wire form to make it controlled
+// need to work through reserve gear flow for add to cart, updating state, and updating database and using local state for the form
+
+
+
+
 class ReservationSelector extends React.Component {
  
   handleChange(event) {
@@ -20,10 +28,10 @@ class ReservationSelector extends React.Component {
   
   handleSubmit(event) {
     event.preventDefault()
+
   }
 
   
-  filterItems = (props) => {}
   
 
 // create dropdown options based on inventory amount 
@@ -37,17 +45,11 @@ class ReservationSelector extends React.Component {
     })
     return numbers
    }
-   
-   
-  
+    
   
   render(){
     return(
     <div className="reservation-container">
-
-
-{this.filterItems(this.props)}
-
 
     
     <form onSubmit={this.handleSubmit}>

@@ -11,8 +11,14 @@
 // });
 
 
-// add a single from a card to state
+// add a single inventory type from a inventory page to state
 export const setSingleItem = (item) => ({
   type: "ADD_SINGLE_ITEM_TO_STATE",
+  payload: item
+})
+
+
+export const addItemToCart = (item) => ({
+  type: "ADD_TO_CART",
   payload: item
 })
