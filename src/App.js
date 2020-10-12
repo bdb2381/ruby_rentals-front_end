@@ -4,6 +4,9 @@ import {
   BrowserRouter as Router,
   Link
 } from "react-router-dom";
+import Navbar from './components/navBar'
+import HomeContainer from './containers/HomeContainer'
+
 
 import ItemsContainer from './containers/ItemsContainer.js'
 
@@ -17,8 +20,8 @@ class App extends React.Component {
     return (
       <div className="App">
           <Router>
-            <Link to="/">Home</Link> 
-            <Link to="/gear">Gear</Link> 
+            <Navbar/>
+            <HomeContainer/>
             <ItemsContainer/>   
           </Router>
         </div>

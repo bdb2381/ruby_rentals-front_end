@@ -1,7 +1,17 @@
 // Set Initial State for reducer
 
 const initialState = {
-  itemsInCart: {},
+  // itemsInCart: {
+  //   items: [{
+  //     startDate: null,
+  //     endDate: null,
+  //     inventory: null,
+  //     itemCost: 0,
+  //     itemId: null
+  //   }]
+  // },
+  cartItems: [],
+  totalNumberOfItems: 0
 
 }
 
@@ -9,11 +19,15 @@ const initialState = {
 export default function cartReducer(state = initialState, action){
 
   switch(action.type){
-    case "ADD_TO_CART":
-      return {
-        ...state,
-        itemsInCart:[...state.itemsInCart, action.payload.itemsInCart]
-      }
+  
+      case "ADD_TO_CART":
+        console.log(action.payload)
+        return {
+          ...state,
+          cartItems:[...state.cartItems, action.payload]
+        }
+
+
 
   default:
     // just incase, return state

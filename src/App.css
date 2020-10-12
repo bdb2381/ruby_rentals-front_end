@@ -3,7 +3,28 @@
   font-family: monospace;
 }
 
+
 /*******************/
+/*******************/
+/* NAV BAR COMPONENT*/
+
+.nav-wrapper{
+  background: #b3aeae;
+  padding: 8px;
+
+}
+
+.brand-wordmark{
+  font-size: 35px;
+  text-align: left;
+}
+
+
+
+/*******************/
+
+
+
 /*******************/
 /* INDIVIDUAL ITEM DETAILS/INVENTORY COMPONENT*/
 .item {

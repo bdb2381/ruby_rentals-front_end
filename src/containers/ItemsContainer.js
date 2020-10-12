@@ -22,7 +22,10 @@ class ItemsContainer extends React.Component {
             
             const gearId = routerProps.match.params.gearId
             const item = this.props.allItems.find(i => i.id === parseInt(gearId))
-            return item ? <InventoryDetail item={item} /> : "Loading..."
+
+            return item ? <InventoryDetail item={item} /> 
+            
+            : "Loading..."
           }}/>
 
           <Route path="/gear" render={() => {
@@ -46,9 +49,6 @@ const mapDispatchToProps = (dispatch ) => {
 const mapStateToProps = (state) => {
   // console.log(state)
   return {allItems: state.itemsReducer.allItems }
-
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemsContainer)

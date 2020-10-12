@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
+import {addItemToCart} from '../../redux/actions'
 
 
 // finish adding addToCar redux flow. Action of addItemToCart(item) is written plus reducer with itemsInCart state
@@ -28,19 +28,23 @@ class ReservationSelector extends React.Component {
   
   handleSubmit(event) {
     event.preventDefault()
-
   }
 
+  handleClick = (id)=>{
+   this.props.addItemToCart(id);
+  }
   
   
 
 // create dropdown options based on inventory amount 
    inventoryAvailable (){
     const {inventory} = this.props.item 
- 
+    const {item} = this.props
+    let cost = item.day_rental_price
+    
     let numbers = inventory.map((item, i) => {
       return(
-        <option name={++i} value={i}>{i}</option>
+        <option id={item.id} name={++i} value={i * cost}>{i}</option>
       )
     })
     return numbers
@@ -57,13 +61,17 @@ class ReservationSelector extends React.Component {
       <div className="datePicker"> 
         Pickup Date
         <input 
-          type="date" name="startDate" value="startDate"/>
+          type="date" 
+          name="startDate" 
+          value="startDate"/>
       </div>
 
       <div className="datePicker">
         Return Date
         <input 
-          type="date" name="returnDate" value="returnDate"/>
+          type="date" 
+          name="returnDate" 
+          value="returnDate"/>
       </div>
 
       <div className="reservationDropdown">
@@ -76,7 +84,7 @@ class ReservationSelector extends React.Component {
           </label>
       </div>
       <div>
-        <input type="submit" name="submit" value="Add To Cart" id="submit" />
+        <input type="submit" name="submit" value="Add To Cart" id="submit" onClick={() => this.handleClick(this.props.item.id)} />
       </div>
     
     </form>
@@ -91,7 +99,34 @@ class ReservationSelector extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  return {item: state.currentItemReducer.item }
+  return {
+    item: state.currentItemReducer.item,
+    cartItems: state.cartItems
+    // itemsInCart: state.cartReducer.itemsInCart 
+  }
 }
 
-export default connect(mapStateToProps)(ReservationSelector)
+const mapDispatchToProps= (dispatch)=>{
+ 
+  return {
+    addItemToCart: (id) => {
+      console.log(id)
+      dispatch(addItemToCart(id))}
+  }
+}
+
+
+  export default connect(mapStateToProps, mapDispatchToProps)(ReservationSelector)
+
+// onst initialState = {
+//   itemsInCart: {
+//     items: [{
+//       startDate: null,
+//       endDate: null,
+//       inventory: null,
+//       amount: 0
+//     }]
+//   },
+//   totalNumberOfItems: 0
+// }
+

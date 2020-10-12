@@ -22,9 +22,6 @@ const initialState = {
   // item: []
 };
 
-
-
-
 ////////////////
 // Reducer w/ switch statements to cause state to change
 
