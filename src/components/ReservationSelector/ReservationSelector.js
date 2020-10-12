@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 
 
 
 class ReservationSelector extends React.Component {
  
-  
   handleChange(event) {
-    console.log(event)
+    // console.log(event)
     // let name = event.target.name
     // let value = event.target.value
 
@@ -21,28 +20,33 @@ class ReservationSelector extends React.Component {
   
   handleSubmit(event) {
     event.preventDefault()
-    console.log(event)
   }
 
-  // item.id === props.id
   
-  // filterItems = (this.props) => {
-  //   console.log(this.props)
-  //   let item = this.props.allItems.filter( item => console.log(item.id) )
-  //   return item
-  // }
+  filterItems = (props) => {}
   
 
+// create dropdown options based on inventory amount 
+   inventoryAvailable (){
+    const {inventory} = this.props.item 
+ 
+    let numbers = inventory.map((item, i) => {
+      return(
+        <option name={++i} value={i}>{i}</option>
+      )
+    })
+    return numbers
+   }
+   
+   
   
   
   render(){
-    console.log(this.props)
-  return(
+    return(
     <div className="reservation-container">
 
 
-{/* {this.filterItems()} */}
-
+{this.filterItems(this.props)}
 
 
     
@@ -62,18 +66,15 @@ class ReservationSelector extends React.Component {
 
       <div className="reservationDropdown">
           <label>
-            Pick your favorite flavor:
             {/* <select value={value} onChange={hhandleChange}> */}
+            How many {this.props.item.model}:
             <select onChange={this.handleChange}>
-              <option name="grapefruit" value="grapefruit">Grapefruit</option>
-              <option name="" value="lime">Lime</option>
-              <option name="" value="coconut">Coconut</option>
-              <option name="" value="mango">Mango</option>
+              {this.inventoryAvailable()}
             </select>
           </label>
       </div>
       <div>
-        <input type="submit" name="submit" value="Submit Reservation" id="submit" />
+        <input type="submit" name="submit" value="Add To Cart" id="submit" />
       </div>
     
     </form>
@@ -88,10 +89,7 @@ class ReservationSelector extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  console.log(state)
-  return {item: state.item }
+  return {item: state.currentItemReducer.item }
 }
 
-export default connect(mapStateToProps,
-  // mapDispatchToProps
-  )( ReservationSelector)
+export default connect(mapStateToProps)(ReservationSelector)

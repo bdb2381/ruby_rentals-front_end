@@ -9,7 +9,7 @@ const InventoryDetail = (props) => {
   const {id, brand, model, day_rental_price, gear_photo_url, size, description} = props.item
   
   
-  console.log(item)
+  
   ////////////////
   // Render the details for a single peice of inventory/equipment
   //   item:
@@ -20,14 +20,16 @@ const InventoryDetail = (props) => {
 // model_year: 2020
 // size: "2 Person"
 const altImageTag = `${brand} ${model} ${size} photo`
-props.setSingleItem(props)
+
+// props.setSingleItem(props)
+props.dispatch(setSingleItem(props))
 
 return(
   <div> 
     <div>
     </div>
 
-      <div className="item">
+      <div className="item" id={id}>
 
         <div className="itemName">
           {brand}  {model} 
@@ -58,12 +60,12 @@ return(
 
 
 
-const mapDispatchToProps = (dispatch) => {
-  return {setSingleItem: (item) => dispatch(setSingleItem(item))}
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {setSingleItem: (item) => dispatch(setSingleItem(item))}
+// }
 
 
 
-export default connect(null, mapDispatchToProps)(InventoryDetail)
+// export default connect(null, mapDispatchToProps)(InventoryDetail)
 
-// export default InventoryDetail
+export default  connect()(InventoryDetail)  

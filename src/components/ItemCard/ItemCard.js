@@ -13,7 +13,7 @@ const altImageTag = `${brand} ${model} ${size} ${item_type} photo`
   return (
     <div className="card-container">
       
-    <Link exact to={`/gear/${id}`}>
+    <Link to={`/gear/${id}`}>
       <div className="card" id={id}>
         <div>
           <img className="itemPhoto" src={gear_photo_url} alt={altImageTag}/>

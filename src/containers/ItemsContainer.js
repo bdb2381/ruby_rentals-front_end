@@ -15,8 +15,6 @@ class ItemsContainer extends React.Component {
   }
   
   render (){
-    console.log(this.props.allItems, "top of render")
-
     return (
       <div>                
         <Switch>

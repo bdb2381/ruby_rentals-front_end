@@ -1,6 +1,7 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import ReservationSelector from '../components/ReservationSelector/ReservationSelector.js'
+
+// import {connect} from 'react-redux'
 
 const ReservationContainer = () => {
 
