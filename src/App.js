@@ -34,10 +34,3 @@ class App extends React.Component {
 
 export default App;
 
-// const rootElement = document.getElementById('root')
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>,
-//   rootElement
-// )

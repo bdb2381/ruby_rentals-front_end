@@ -18,7 +18,8 @@ import {
 const initialState = {
   allItems: [],
   loading: false,
-  error: null
+  error: null,
+  item: []
 };
 
 
@@ -55,7 +56,11 @@ export default function itemsReducer(state = initialState, action) {
         error: action.payload.error,
         allItems: {}
       }
-
+    case "ADD_SINGLE_ITEM_TO_STATE":
+      return {
+        ...state,
+        item: [...state.item, action.payload.item]
+      }
     default:
       // just incase, return state
       return state

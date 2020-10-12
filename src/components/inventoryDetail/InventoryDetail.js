@@ -1,25 +1,31 @@
 import React from 'react';
+import {connect} from 'react-redux'
+import {setSingleItem} from '../../redux/actions'
 
 import ReservationContainer from '../../containers/ReservationContainer.js'
 
+
 const InventoryDetail = (props) => {
   const {id, brand, model, day_rental_price, gear_photo_url, size, description} = props.item
-  console.log(props)
-
+  
+  
+  console.log(item)
   ////////////////
   // Render the details for a single peice of inventory/equipment
-
-//   item:
+  //   item:
 // amount_available: 15
 // gear_photo_url: "https://www.nemoequipment.com/wp-content/uploads/szegowzpck69xqeeiayp-1024x866.jpg"
 // id: 18
 // inventory: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 // model_year: 2020
 // size: "2 Person"
-  const altImageTag = `${brand} ${model} ${size} photo`
+const altImageTag = `${brand} ${model} ${size} photo`
+props.setSingleItem(props)
 
-    return(
-      <div> 
+return(
+  <div> 
+    <div>
+    </div>
 
       <div className="item">
 
@@ -43,18 +49,21 @@ const InventoryDetail = (props) => {
       </div> 
 
       <div className="reservation-container">
-        <ReservationContainer   />
+        <ReservationContainer />
       </div>
     
-
-
-
-      </div>  // end wrapper div
+     </div>  // end wrapper div
     ) // end return
-
-
-
-
 } // end InventoryDetail
 
-export default InventoryDetail;
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {setSingleItem: (item) => dispatch(setSingleItem(item))}
+}
+
+
+
+export default connect(null, mapDispatchToProps)(InventoryDetail)
+
+// export default InventoryDetail

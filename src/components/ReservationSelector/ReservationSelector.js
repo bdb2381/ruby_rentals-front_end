@@ -24,23 +24,24 @@ class ReservationSelector extends React.Component {
     console.log(event)
   }
 
+  // item.id === props.id
   
-  
-  filterItems = () =>{
-
-    return console.log(this.props.allItems)
-  }
+  // filterItems = (this.props) => {
+  //   console.log(this.props)
+  //   let item = this.props.allItems.filter( item => console.log(item.id) )
+  //   return item
+  // }
   
 
   
   
   render(){
-    // console.log(this.props.allItems)
+    console.log(this.props)
   return(
     <div className="reservation-container">
 
 
-{this.filterItems()}
+{/* {this.filterItems()} */}
 
 
 
@@ -83,13 +84,14 @@ class ReservationSelector extends React.Component {
   ) // end return
 } // end ReservationSelector
 }
-// export default connect(mapStateToProps, mapStateToProps)(ReservationSelector)
+
 
 
 const mapStateToProps = (state) => {
-  // console.log(state)
-  return {allItems: state.itemsReducer.allItems }
-  
+  console.log(state)
+  return {item: state.item }
 }
-export default connect(mapStateToProps)( ReservationSelector)
-// const mapDispatchToProps = (dispatch) => {}
+
+export default connect(mapStateToProps,
+  // mapDispatchToProps
+  )( ReservationSelector)
