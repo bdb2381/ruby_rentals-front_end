@@ -1,8 +1,7 @@
 // Set Initial State for reducer
 
 const initialState = {
-  // itemsInCart: {
-  //   items: [{
+    //   cartItems: [{
   //     startDate: null,
   //     endDate: null,
      
@@ -10,9 +9,6 @@ const initialState = {
   //   }]
   // },
   cartItems: [],
-  
-  startDate: "2020-01-01",
-  endDate: "2020-02-02"
 }
 
 

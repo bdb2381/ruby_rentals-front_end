@@ -5,22 +5,19 @@ import {addItemToCart} from '../../redux/actions'
 
 class ReservationSelector extends React.Component {
  state = {
+   // local state for reservation form
   startDate: "2020-01-01",
-  endDate: "2020-02-02"
+  returnDate: "2020-02-02",
+  numberOfItemsReserved: 0
  }
-//  2020-10-07
 
 
-
-
-  handleChange(event) {
+ // handle change for calender input
+handleChange(event) {
     event.preventDefault()
     
     let name = event.target.name
     let value = event.target.value
-    
-    console.log(name)
-    console.log( value)
 
     this.setState((prevState) => (
       {
@@ -29,8 +26,23 @@ class ReservationSelector extends React.Component {
       }
     ))
   }
+
+// handle change for dropdown. Required since <select> doesn't have a name
+  handleDropdownChange(event) {
+    event.preventDefault()
+    
+    let value = event.target.value
+
+    this.setState((prevState) => (
+      {
+        ...prevState,
+        numberOfItemsReserved: value,
+      }
+    ))
+  }
   
 
+  // add startDate & endDate to the item Object
   handleSubmit = (event)=>{
     event.preventDefault()
 
@@ -38,7 +50,9 @@ class ReservationSelector extends React.Component {
      {
      ...this.props.item, 
     startDate: this.state.startDate,
-    endDate: this.state.endDate
+    returnDate: this.state.returnDate,
+    numberOfItemsReserved: this.state.numberOfItemsReserved
+
     }
     );
   }
@@ -50,15 +64,18 @@ class ReservationSelector extends React.Component {
     const {inventory} = this.props.item 
     const {item} = this.props
     let cost = item.day_rental_price
-    
+    let id = item.id
+  
     let numbers = inventory.map((item, i) => {
       return(
-        <option id={item.id} name={++i} value={i * cost}>{i}</option>
+        <option 
+        key={id} 
+        value={i}
+        > {i} </option>
       )
     })
     return numbers
    }
-    
   
   render(){
     return(
@@ -66,7 +83,7 @@ class ReservationSelector extends React.Component {
 
     
     <form onSubmit={this.handleSubmit}>
-    {/* onClick={() => this.handleClick(this.props.item)}  */}
+      
       <div className="datePicker"> 
         Pickup Date
         <input 
@@ -79,6 +96,7 @@ class ReservationSelector extends React.Component {
       <div className="datePicker">
         Return Date
         <input 
+          onChange={(event) => this.handleChange(event)}
           type="date" 
           name="returnDate" 
           value={this.props.returnDate}/>
@@ -86,9 +104,8 @@ class ReservationSelector extends React.Component {
 
       <div className="reservationDropdown">
           <label>
-            {/* <select value={value} onChange={hhandleChange}> */}
             How many {this.props.item.model}:
-            <select onChange={this.handleChange}>
+            <select onChange={(event) => this.handleDropdownChange(event)}>
               {this.inventoryAvailable()}
             </select>
           </label>
