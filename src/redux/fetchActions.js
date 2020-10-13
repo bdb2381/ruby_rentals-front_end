@@ -62,11 +62,55 @@ export function handleErrors(response) {
   return response;
 }
 
-// user login 
-const login = (email, password) => {
-  return fetch(`${API_ROOT}/login`, {
+// // user login 
+// const login = (email, password) => {
+//   return fetch(`${API_ROOT}/login`, {
+//     method: "POST",
+//     headers: headers,
+//     body: JSON.stringify({ email, password }),
+//   }).then((res) => res.json());
+// };
+
+
+
+// CREATE/POST a new user account 
+export const signupPostFetch = user => {
+
+  return dispatch => {
+    return fetch(`${API_ROOT}/users/`, {
     method: "POST",
     headers: headers,
-    body: JSON.stringify({ email, password }),
-  }).then((res) => res.json());
-};
+    body: JSON.stringify({user})
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      if (data.message || data.error){
+        console.log(data.message)
+        console.log(data.error)
+      }
+      else {
+        localStorage.setItem("token, data.token")
+        dispatch(loginUser(data.user))
+      }
+    })
+
+  } // end first return
+} // end signupPostFetch
+
+
+// userObject from signupPOstFetch looks like
+// {
+//   user: { 
+//     email: "the email",
+//     password: "[filter]",
+//     city: "the city"
+//     // and so on
+//   }
+//   token: "aaaaaa.xxxxx.mmmmmm"
+// }
+
+
+const loginUser = userObject => ({
+  type: 'LOGIN_USER',
+  payload: userObject
+})
