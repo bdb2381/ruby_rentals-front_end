@@ -3,35 +3,44 @@ import {connect} from 'react-redux'
 import {addItemToCart} from '../../redux/actions'
 
 
-// finish adding addToCar redux flow. Action of addItemToCart(item) is written plus reducer with itemsInCart state
-
-// need to wire form to make it controlled
-// need to work through reserve gear flow for add to cart, updating state, and updating database and using local state for the form
-
-
-
-
 class ReservationSelector extends React.Component {
- 
-  handleChange(event) {
-    // console.log(event)
-    // let name = event.target.name
-    // let value = event.target.value
+ state = {
+  startDate: "2020-01-01",
+  endDate: "2020-02-02"
+ }
+//  2020-10-07
 
-    // this.setState((prevState) => ({
-    //   item: {
-    //     ...prevState.item,
-    //     [name]: value,
-    //   },
-    // }));
+
+
+
+  handleChange(event) {
+    event.preventDefault()
+    
+    let name = event.target.name
+    let value = event.target.value
+    
+    console.log(name)
+    console.log( value)
+
+    this.setState((prevState) => (
+      {
+        ...prevState,
+        [name]: value,
+      }
+    ))
   }
   
-  handleSubmit(event) {
-    event.preventDefault()
-  }
 
-  handleClick = (item)=>{
-   this.props.addItemToCart(item);
+  handleSubmit = (event)=>{
+    event.preventDefault()
+
+   this.props.addItemToCart(
+     {
+     ...this.props.item, 
+    startDate: this.state.startDate,
+    endDate: this.state.endDate
+    }
+    );
   }
   
   
@@ -57,13 +66,14 @@ class ReservationSelector extends React.Component {
 
     
     <form onSubmit={this.handleSubmit}>
-
+    {/* onClick={() => this.handleClick(this.props.item)}  */}
       <div className="datePicker"> 
         Pickup Date
         <input 
+          onChange={(event) => this.handleChange(event)}
           type="date" 
           name="startDate" 
-          value="startDate"/>
+          value={this.props.startDate}/>
       </div>
 
       <div className="datePicker">
@@ -71,7 +81,7 @@ class ReservationSelector extends React.Component {
         <input 
           type="date" 
           name="returnDate" 
-          value="returnDate"/>
+          value={this.props.returnDate}/>
       </div>
 
       <div className="reservationDropdown">
@@ -84,7 +94,7 @@ class ReservationSelector extends React.Component {
           </label>
       </div>
       <div>
-        <input type="submit" name="submit" value="Add To Cart" id="submit" onClick={() => this.handleClick(this.props.item)} />
+        <input type="submit" name="submit" value="Add To Cart" id="submit" />
       </div>
     
     </form>
@@ -100,8 +110,10 @@ class ReservationSelector extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    item: state.currentItemReducer.item,
-    cartItems: state.cartItems
+    item: state.currentItemReducer.item,      // the item current on display
+    cartItems: state.cartItems,                // for items added to cart
+    startDate: state.startDate,
+    endDate: state.endDate
     // itemsInCart: state.cartReducer.itemsInCart 
   }
 }

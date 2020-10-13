@@ -5,14 +5,14 @@ const initialState = {
   //   items: [{
   //     startDate: null,
   //     endDate: null,
-  //     inventory: null,
-  //     itemCost: 0,
+     
   //     item: {}
   //   }]
   // },
   cartItems: [],
-  totalNumberOfItems: 0
-
+  
+  startDate: "2020-01-01",
+  endDate: "2020-02-02"
 }
 
 
@@ -24,7 +24,8 @@ export default function cartReducer(state = initialState, action){
         console.log(action.payload)
         return {
           ...state,
-          cartItems:[...state.cartItems, action.payload]
+          cartItems:[...state.cartItems, action.payload],
+          // startDate: [...state.startDate, action.payload ]
         }
 
 

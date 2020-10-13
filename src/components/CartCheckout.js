@@ -18,22 +18,21 @@ const CartCheckout = (props) => {
 // size: "75 Liters"
 
 
-  console.log(props)
-    return(
+  return(
+    <div>
       <div>
-  <div>
-    Items
-  </div>
-  <div>
-    {props.cartItems.map((item, i) => {
-      return( 
-        <p> {item.brand} {item.model} {item.item_type} - ${item.day_rental_price}/day</p>
-         )
-      })}
-  </div>
-
+        Items
       </div>
-    )
+
+      <div>
+        {props.cartItems.map((item, i) => {
+          return( 
+            <p> {item.brand} {item.model} {item.item_type} - ${item.day_rental_price}/day</p>
+            )
+          })}
+      </div>
+    </div>
+  )
 
 }
 
