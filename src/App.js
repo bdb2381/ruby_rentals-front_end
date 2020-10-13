@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
-  Link
+  
 } from "react-router-dom";
 import Navbar from './components/navBar'
 import HomeContainer from './containers/HomeContainer'
@@ -21,7 +21,7 @@ class App extends React.Component {
       <div className="App">
           <Router>
             <Navbar/>
-            <HomeContainer/>
+            <HomeContainer/> 
             <ItemsContainer/>   
           </Router>
         </div>

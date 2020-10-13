@@ -1,7 +1,7 @@
 import React from 'react'
 import ReservationSelector from '../components/ReservationSelector/ReservationSelector.js'
 
-// import {connect} from 'react-redux'
+// import CartCheckout from '../components/CartCheckout'
 
 const ReservationContainer = () => {
 
@@ -12,7 +12,10 @@ const ReservationContainer = () => {
   return(
     <div>
       <h1>Reserve Your Gear </h1>
-      <ReservationSelector/>
+
+        <ReservationSelector/>
+        {/* <CartCheckout/> */}
+
 
       </div> // end container div
     ) // end return 
@@ -21,15 +24,5 @@ const ReservationContainer = () => {
 
 
 
-
-// const mapDispatchToProps = (dispatch ) => {
-//   return {getItems: () => dispatch(getItems())}
-// }
-
-// const mapStateToProps = (state) => {
-//   // console.log(state)
-//   return {allItems: state.itemsReducer.allItems }
-
-// }
 
 export default ReservationContainer

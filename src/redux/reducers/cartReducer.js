@@ -7,7 +7,7 @@ const initialState = {
   //     endDate: null,
   //     inventory: null,
   //     itemCost: 0,
-  //     itemId: null
+  //     item: {}
   //   }]
   // },
   cartItems: [],

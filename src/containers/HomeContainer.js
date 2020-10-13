@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
 
 import Home from '../components/Home'
-import ItemsContainer from '../containers/ItemsContainer.js'
+
+import CartCheckout from '../components/CartCheckout'
+
+
+
 class HomeContainer extends React.Component {
 
 render(){
 return(
   <div>
+  
     <Home/>
+    <CartCheckout/>
+    
+
   </div>
 
 )}

@@ -30,8 +30,8 @@ class ReservationSelector extends React.Component {
     event.preventDefault()
   }
 
-  handleClick = (id)=>{
-   this.props.addItemToCart(id);
+  handleClick = (item)=>{
+   this.props.addItemToCart(item);
   }
   
   
@@ -84,7 +84,7 @@ class ReservationSelector extends React.Component {
           </label>
       </div>
       <div>
-        <input type="submit" name="submit" value="Add To Cart" id="submit" onClick={() => this.handleClick(this.props.item.id)} />
+        <input type="submit" name="submit" value="Add To Cart" id="submit" onClick={() => this.handleClick(this.props.item)} />
       </div>
     
     </form>
@@ -109,9 +109,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps= (dispatch)=>{
  
   return {
-    addItemToCart: (id) => {
-      console.log(id)
-      dispatch(addItemToCart(id))}
+    addItemToCart: (item) => {
+      console.log(item)
+      dispatch(addItemToCart(item))}
   }
 }
 
