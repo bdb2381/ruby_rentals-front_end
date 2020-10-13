@@ -2,12 +2,12 @@
 // universal FETCH headers and tokens
 const API_ROOT = `http://localhost:3000/api/v1`;
 
-// const token = localStorage.getItem("token");
+const token = localStorage.getItem("token");
 
 const headers = {
   "Content-Type": "application/json",
   Accept: "application/json",
-  // Authorization: `Bearers ${token}`,
+  Authorization: `Bearers ${token}`,
 };
 
 
@@ -38,6 +38,7 @@ export const fetchItemsFailure = error => ({
 //////////////////////
 // GET FETCH REQUESTS 
 
+// load items from inventory 
 export const getItems = () =>{
   
   return dispatch => {
@@ -61,4 +62,11 @@ export function handleErrors(response) {
   return response;
 }
 
-
+// user login 
+const login = (email, password) => {
+  return fetch(`${API_ROOT}/login`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({ email, password }),
+  }).then((res) => res.json());
+};
