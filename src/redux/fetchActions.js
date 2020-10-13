@@ -62,6 +62,8 @@ export function handleErrors(response) {
   return response;
 }
 
+
+
 // // user login 
 // const login = (email, password) => {
 //   return fetch(`${API_ROOT}/login`, {
@@ -89,7 +91,9 @@ export const signupPostFetch = user => {
         console.log(data.error)
       }
       else {
-        localStorage.setItem("token, data.token")
+        console.log(data.user)
+        localStorage.setItem("token", data.jwt)
+        
         dispatch(loginUser(data.user))
       }
     })
@@ -97,7 +101,7 @@ export const signupPostFetch = user => {
   } // end first return
 } // end signupPostFetch
 
-
+//////////////////////
 // userObject from signupPOstFetch looks like
 // {
 //   user: { 
@@ -108,9 +112,53 @@ export const signupPostFetch = user => {
 //   }
 //   token: "aaaaaa.xxxxx.mmmmmm"
 // }
+//////////////////////
 
 
-const loginUser = userObject => ({
+const loginUser = userObject => (
+  console.log(userObject),
+  {
   type: 'LOGIN_USER',
   payload: userObject
 })
+
+
+
+
+export const loginFetch = user => {
+  return dispatch => {
+    return fetch("http://localhost:3000/api/v1/login", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({user})
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.message) {
+          // Need work on invalid login credentials.
+          // This assumes your Rails API will return a JSON object with a key of
+          // 'message' if there is an error
+        } else {
+          localStorage.setItem("token", data.token)
+          dispatch(loginUser(data.user))
+        }
+      })
+  }
+}
+
+
+
+// Unhandled Rejection (TypeError): Failed to execute 'setItem' on 'Storage': 2 arguments required, but only 1 present.
+// (anonymous function)
+// src/redux/fetchActions.js:93
+//   90 |   }
+//   91 |   else {
+//   92 |     console.log(data)
+// > 93 |     localStorage.setItem("token, data.token")
+//      | ^  94 |     dispatch(loginUser(data.user))
+//   95 |   }
+//   96 | })
+// View compiled

@@ -1,7 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {loginFetch} from '../redux/actions'
+import {loginFetch} from '../redux/fetchActions.js'
+
 
 class Login extends React.
 Component {

@@ -2,12 +2,15 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {signupPostFetch} from '../redux/fetchActions'
 
+
+
 class Signup extends React.Component {
 
   state = {
     email: "",
     password: "",
-    first_name: "",,
+    password_confirmation: "",
+    first_name: "",
     last_name: "",
     street_address: "", 
     city: "",
@@ -17,12 +20,13 @@ class Signup extends React.Component {
   }
 
   handleSignupChange = event => {
-    this.setState = {
+    this.setState({   
       [event.target.name]: event.target.value
     }
+    )
   }
 
-handleSubmit = event => {
+handleSubmit = (event) => {
   event.preventDefault()
   this.props.signupPostFetch(this.state)
 }
@@ -30,64 +34,76 @@ handleSubmit = event => {
 render(){
   return(
 
-    <form onSubmit={this.handleSubmit()} onChange={this.handleSignupChange} >
+    <form 
+      onSubmit={this.handleSubmit} 
+      
+     >
+
       <input
-        name="email "
-        placeholder="What is your email? "
-        value={this.state.email }
-        // onChange={   }
+        name="email"
+        placeholder="What is your email?"
+        value={this.state.email}
+        onChange={this.handleSignupChange}
         />
       <input
-        name="password "
+        name="password"
         placeholder="Password"
-        value={this.state.password }
-        // onChange={   }
+        value={this.state.password}
+        onChange={this.handleSignupChange}
         />
+
+        <input 
+        name="password_confirmation"
+        placeholder="Confirm Password"
+        value={this.state.password_confirmation}
+        onChange={this.handleSignupChange}
+        />
+
       <input
-        name="first_name "
-        placeholder="First Name "
-        value={this.state.first_name }
-        // onChange={   }
+        name="first_name"
+        placeholder="First Name"
+        value={this.state.first_name}
+        onChange={this.handleSignupChange}
         />
       <input
         name="last_name"
-        placeholder="Last Name "
-        value={this.state.last_name }
-        // onChange={   }
+        placeholder="Last Name"
+        value={this.state.last_name}
+        onChange={this.handleSignupChange}
         />
       <input
-        name="street_address "
-        placeholder="Street Address "
+        name="street_address"
+        placeholder="Street Address"
         value={this.state.street_address }
-        // onChange={   }
+        onChange={this.handleSignupChange}
         />
-      <input y
-        name="city "
+      <input 
+        name="city"
         placeholder="City "
         value={this.state.city }
-        // onChange={   }
+        onChange={this.handleSignupChange}
         />
       <input  // this should become a prepopulate dropdown
-        name="state "
-        placeholder="state "
+        name="state"
+        placeholder="State"
         value={this.state.state }
-        // onChange={   }
+        onChange={this.handleSignupChange}
         />
       <input  // this should become a prepopulate dropdown
-        name="zip_code "
+        name="zip_code"
         placeholder="Zipcode "
         value={this.state.state.zip_code }
-        // onChange={   }
+        onChange={this.handleSignupChange}
         />
       <input  // this should become a prepopulate dropdown
-        name="phone "
+        name="phone"
         placeholder="Phone Number "
         value={this.state.phone }
-        // onChange={   }
+        onChange={this.handleSignupChange}
         />
 
-      <input type="submit"/>
-
+      {/* <input type="submit" placeholder="Create Your Account"/> */}
+      <button className="signupButton">Create Your Account</button>
     </form>
 
 

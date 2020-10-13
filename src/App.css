@@ -1,3 +1,7 @@
+ /* on refactor use module.css  
+ https://www.w3schools.com/react/react_css.asp */
+
+
 .App {
   text-align: center;
   font-family: monospace;
@@ -144,7 +148,7 @@
 }
 
 
-input[type=button], input[type=submit], input[type=reset] {
+ input[type=button], input[type=submit], input[type=reset]{
   background-color: #e6c611;
   border: none;
   font-size: 1.5em;
@@ -156,7 +160,18 @@ input[type=button], input[type=submit], input[type=reset] {
   width: 100%;
 }
 
+.signupButton{
+  background-color: #e6c611;
+  border: none;
+  font-size: 1.5em;
+  color: black;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
 
+}
 
 
 

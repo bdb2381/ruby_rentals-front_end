@@ -24,26 +24,3 @@ export const addItemToCart = (item) => ({
 })
 
 
-export const loginFetch = user => {
-  return dispatch => {
-    return fetch("http://localhost:3000/api/v1/login", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({user})
-    })
-      .then(resp => resp.json())
-      .then(data => {
-        if (data.message) {
-          // Need work on invalid login credentials.
-          // This assumes your Rails API will return a JSON object with a key of
-          // 'message' if there is an error
-        } else {
-          localStorage.setItem("token", data.token)
-          dispatch(loginUser(data.user))
-        }
-      })
-  }
-}
