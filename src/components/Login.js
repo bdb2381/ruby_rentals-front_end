@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {loginFetch} from '../redux/fetchActions.js'
 
@@ -17,10 +17,14 @@ Component {
       [event.target.name]: event.target.value });
   };
 
-  handleLoginSubmit = (event) => {
+   handleLoginSubmit = (event) => {
     event.preventDefault();
 
     this.props.loginFetch(this.state)
+    
+    // upon successful login, redirect to homepage 
+    // refactor to catch errors for failed login 
+    this.props.redirect.push("/")  // redirect == history.push
    
   };
 

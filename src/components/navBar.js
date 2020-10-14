@@ -8,11 +8,16 @@ class Navbar extends React.Component {
  
  onLogoutClick (){
     
-    // Remove the token from localStorage
-    localStorage.removeItem("token")
-    localStorage.setItem("user")
+    // Remove the token and user data from localStorage
+    localStorage.clear()
+
     // Remove the user object from the Redux store
     this.props.logoutUser()
+
+    // need to implement version of login redirect 
+    // this.props.history.push("/") 
+
+
     }
     
     render(){

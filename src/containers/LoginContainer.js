@@ -5,10 +5,17 @@ import Login from '../components/Login'
 
 class LoginContainer extends React.Component {
 
+handleRedirectUponLogin(props){
+  this.props.history.push("/")
+}
+
+
 render(){
+  let redirect = this.props.history
+  console.log(redirect)
   return(
     <div> 
-      <Login/>
+      <Login redirect={redirect}/>
     </div>
 
 
