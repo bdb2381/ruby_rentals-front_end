@@ -7,7 +7,7 @@ const token = localStorage.getItem("token");
 const headers = {
   "Content-Type": "application/json",
   Accept: "application/json",
-  Authorization: `Bearers ${token}`,
+  'Authorization': `Bearer ${token}`
 };
 
 
@@ -63,18 +63,7 @@ export function handleErrors(response) {
 }
 
 
-
-// // user login 
-// const login = (email, password) => {
-//   return fetch(`${API_ROOT}/login`, {
-//     method: "POST",
-//     headers: headers,
-//     body: JSON.stringify({ email, password }),
-//   }).then((res) => res.json());
-// };
-
-
-
+//////////////////////////
 // CREATE/POST a new user account 
 export const signupPostFetch = user => {
 
@@ -115,6 +104,9 @@ export const signupPostFetch = user => {
 //////////////////////
 
 
+
+/////////////////////
+// set user object to state 
 const loginUser = userObject => (
   console.log(userObject),
   {
@@ -123,42 +115,57 @@ const loginUser = userObject => (
 })
 
 
-
-
+//////////////////////
+//  user login. GET fetch 
 export const loginFetch = user => {
+  console.log(user)
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/login", {
+    return fetch(`${API_ROOT}/login/`, {
       method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
+      headers: headers,
       body: JSON.stringify({user})
     })
       .then(resp => resp.json())
       .then(data => {
         if (data.message) {
-          // Need work on invalid login credentials.
-          // This assumes your Rails API will return a JSON object with a key of
-          // 'message' if there is an error
+          // invalid login credentials msg from auth_controller
+         
         } else {
-          localStorage.setItem("token", data.token)
+          localStorage.setItem("token", data.jwt)
+          localStorage.setItem("user", data.user.id)
+          debugger
           dispatch(loginUser(data.user))
         }
       })
   }
 }
 
-
-
-// Unhandled Rejection (TypeError): Failed to execute 'setItem' on 'Storage': 2 arguments required, but only 1 present.
-// (anonymous function)
-// src/redux/fetchActions.js:93
-//   90 |   }
-//   91 |   else {
-//   92 |     console.log(data)
-// > 93 |     localStorage.setItem("token, data.token")
-//      | ^  94 |     dispatch(loginUser(data.user))
-//   95 |   }
-//   96 | })
-// View compiled
+export const getProfileFetch = () => {
+  return dispatch => {
+    const jwtToken = localStorage.token
+    if (jwtToken){
+      debugger
+      return fetch(`${API_ROOT}/profile/`,{ 
+        method: "GET",      
+        headers: {
+          // "Content-Type": "application/json",
+          // Accept: "application/json",
+          Authorization: `Bearer ${jwtToken}`
+        }
+    })
+    
+    .then(resp => resp.json())
+    .then(data => {
+        if (data.message){
+          // diplay error from auth_controller
+          console.log(data.message)
+          localStorage.removeItem("jwtToken")
+        }
+        else {
+          localStorage.setItem("user", data.user.id)
+          dispatch(loginUser(data.user))
+        }
+      })
+    }
+  } // end return
+} // end getProfileFetch

@@ -4,17 +4,20 @@ import {
   BrowserRouter as Router,
   Route
 } from "react-router-dom";
+import {connect} from 'react-redux'
 
 import Navbar from './components/navBar'
 import HomeContainer from './containers/HomeContainer'
 import LoginContainer from './containers/LoginContainer'
 import SignupContainer from './containers/SignupContainer'
 import ItemsContainer from './containers/ItemsContainer.js'
-
+import {getProfileFetch} from './redux/fetchActions'
 
 class App extends React.Component {
   
   componentDidMount(){
+    // presist user across sessions if token exists in localStore
+    this.props.getProfileFetch()
   }
 
   render() {
@@ -49,14 +52,15 @@ class App extends React.Component {
 
 
           </Router>
-          
-          
-          
-          
         </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  getProfileFetch: () => dispatch(getProfileFetch())
+})
+
+
+export default connect(null, mapDispatchToProps) (App);
 

@@ -69,8 +69,13 @@ Component {
   }
 }
 
-const mapDispatchToProps = (dispatch ) => ({
+// initiate fetch get to login
+const mapDispatchToProps = (dispatch ) => (
+  {
   loginFetch: user => dispatch(loginFetch(user))
-})
+  }
+)
+
+
 
 export default connect(null, mapDispatchToProps)(Login)
