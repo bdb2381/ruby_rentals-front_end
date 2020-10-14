@@ -108,7 +108,6 @@ export const signupPostFetch = user => {
 /////////////////////
 // set user object to state 
 const loginUser = userObject => (
-  console.log(userObject),
   {
   type: 'LOGIN_USER',
   payload: userObject
@@ -133,7 +132,7 @@ export const loginFetch = user => {
         } else {
           localStorage.setItem("token", data.jwt)
           localStorage.setItem("user", data.user.id)
-          debugger
+          
           dispatch(loginUser(data.user))
         }
       })
@@ -142,18 +141,19 @@ export const loginFetch = user => {
 
 export const getProfileFetch = () => {
   return dispatch => {
+    
     const jwtToken = localStorage.token
+    
     if (jwtToken){
-      debugger
-      return fetch(`${API_ROOT}/profile/`,{ 
+      
+      return fetch(`${API_ROOT}/reauth/`,{ 
         method: "GET",      
         headers: {
-          // "Content-Type": "application/json",
-          // Accept: "application/json",
+          "Content-Type": "application/json",
+          Accept: "application/json",
           Authorization: `Bearer ${jwtToken}`
         }
     })
-    
     .then(resp => resp.json())
     .then(data => {
         if (data.message){
