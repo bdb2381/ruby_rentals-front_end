@@ -19,18 +19,45 @@ const CartCheckout = (props) => {
 
 
   return(
-    <div>
-      <div>
+    <div className="cart-container">
+      <div className="cart">
         Items in Your Cart
       </div>
 
       <div>
         {props.cartItems.map((item, i) => {
           return( 
-            <p> {item.brand} {item.model} {item.item_type} - ${item.day_rental_price}/day</p>
-            )
-          })}
+            <div>
+            <div className="reserved">
+              
+            {item.model}<br/> 
+            {item.brand}<br/>
+            {item.item_type}<br/>
+             
+            </div>
+
+          <div className="financial">
+            <p>${item.day_rental_price}/day  </p> 
+          </div>
+
+          <div className="dates">
+            Pickup: {item.startDate}<br/>
+            Return: {item.returnDate} 
+          </div>
+         
+          </div> 
+        )})}
       </div>
+          
+        
+        <div >
+          <button className="checkoutButton">Checkout Equipment</button>
+        </div>
+
+      
+
+
+      
     </div>
   )
 

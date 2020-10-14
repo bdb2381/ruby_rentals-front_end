@@ -26,8 +26,9 @@ class App extends React.Component {
       <div className="App">
           <Router>
             <Navbar/>
-            <HomeContainer/> 
             <ItemsContainer/>   
+
+           
 
           <Route
             exact 
@@ -56,6 +57,11 @@ class App extends React.Component {
           }}
           />
 
+          <Route 
+          exact
+          path="/"
+          component={HomeContainer}
+          />
 
 
 

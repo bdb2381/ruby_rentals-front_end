@@ -40,7 +40,7 @@ class Navbar extends React.Component {
                     <div>
                         <Link to="/cart">Cart</Link>         
                         <Link to="/" 
-                        onClick={() => this.onLogoutClick()} 
+                            onClick={() => this.onLogoutClick()} 
                         >Logout </Link>
 
                     </div> 

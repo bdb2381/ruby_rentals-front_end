@@ -126,15 +126,15 @@
   padding: .5em;
 }
 
+
 /*******************/
 /*******************/
 /* INDIVIDUAL ITEM DETAILS/INVENTORY COMPONENT*/
 
-
 .reservation-container{
   margin: 1em 1em;
   display: inline-grid;
-  border: solid;
+  /* border: solid; */
 }
 
 .datePicker{
@@ -148,6 +148,23 @@
 }
 
 
+/*******************/
+/*******************/
+/* BUTTONS AND INPUT TYPES*/
+.checkoutButton {
+  background-color: #e6c611;
+  border: none;
+  font-size: 1.5em;
+  color: black;
+  padding: 8px 28px;
+  text-decoration: none;
+  cursor: pointer;
+  width: 25%;
+  display: inline-grid;
+  margin: 1em;
+
+}
+
  input[type=button], input[type=submit], input[type=reset]{
   background-color: #e6c611;
   border: none;
@@ -160,7 +177,7 @@
   width: 100%;
 }
 
-.signupButton{
+.signupButton {
   background-color: #e6c611;
   border: none;
   font-size: 1.5em;
@@ -170,14 +187,48 @@
   margin: 4px 2px;
   cursor: pointer;
   width: 100%;
-
 }
 
 
 
 
+/*******************/
+/*******************/
+/* CART and CHECKOUT */
 
+.cart-container {
+  background-color: #9f9e9a;
+  padding: 1em;
+}
 
+.cart {
+  display: inline-grid;
+  width: 20rem;
+  font-size: 2em;
+}
+
+.reserved {
+  
+  width: 20rem;
+  display: inline-grid;
+  font-size: 1.2em;
+  background-color: #e6c611;
+  align-items: left
+} 
+
+.financial {
+  width: 10rem;
+  display: inline-grid;
+  font-size: 1.2em;
+  background-color: #7f9472;
+}
+
+.dates {
+  width: 10rem;
+  display: inline-grid;
+  font-size: 1.2em;
+  background-color: #7f9472;
+}
 
 
 

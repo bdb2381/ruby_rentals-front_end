@@ -11,7 +11,6 @@ render(){
 return(
   <div>
   
-    Cart Container    
     <CartCheckout/>
               
 
