@@ -21,7 +21,7 @@ const CartCheckout = (props) => {
   return(
     <div>
       <div>
-        Items
+        Items in Your Cart
       </div>
 
       <div>

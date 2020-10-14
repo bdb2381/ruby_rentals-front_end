@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Home from '../components/Home'
 
-import CartCheckout from '../components/CartCheckout'
 
 
 
@@ -13,7 +12,7 @@ return(
   <div>
   
     <Home/>
-    <CartCheckout/>
+    
     
 
   </div>

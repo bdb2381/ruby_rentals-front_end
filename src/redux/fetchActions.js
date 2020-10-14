@@ -7,7 +7,7 @@ const token = localStorage.getItem("token");
 const headers = {
   "Content-Type": "application/json",
   Accept: "application/json",
-  'Authorization': `Bearer ${token}`
+  Authorization: `Bearer ${token}`
 };
 
 
@@ -132,7 +132,7 @@ export const loginFetch = user => {
         } else {
           localStorage.setItem("token", data.jwt)
           localStorage.setItem("user", data.user.id)
-          
+          console.log(data.user)
           dispatch(loginUser(data.user))
         }
       })

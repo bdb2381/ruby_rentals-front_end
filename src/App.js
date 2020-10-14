@@ -9,6 +9,7 @@ import {connect} from 'react-redux'
 import Navbar from './components/navBar'
 import HomeContainer from './containers/HomeContainer'
 import LoginContainer from './containers/LoginContainer'
+import CartContainer from './containers/CartContainer'
 import SignupContainer from './containers/SignupContainer'
 import ItemsContainer from './containers/ItemsContainer.js'
 import {getProfileFetch} from './redux/fetchActions'
@@ -16,7 +17,7 @@ import {getProfileFetch} from './redux/fetchActions'
 class App extends React.Component {
   
   componentDidMount(){
-    // presist user across sessions if token exists in localStore
+    // persist user across sessions if token exists in localStore
     this.props.getProfileFetch()
   }
 
@@ -29,11 +30,19 @@ class App extends React.Component {
             <ItemsContainer/>   
 
           <Route
+            exact 
+            path='/cart'
+            render={(routerProps) => {
+              return <CartContainer {...routerProps}
+              />
+            }}
+            />
+
+          <Route
           exact
           path="/login"
           render={(routerProps) => {
             return <LoginContainer {...routerProps}
-            //  handleLogin={this.handleLogin}
             />;
           }}
           />
@@ -43,7 +52,6 @@ class App extends React.Component {
           path="/signup"
           render={(routerProps) => {
             return <SignupContainer {...routerProps}
-            //  handleLogin={this.handleLogin}
             />;
           }}
           />

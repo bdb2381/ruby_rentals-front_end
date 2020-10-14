@@ -24,3 +24,7 @@ export const addItemToCart = (item) => ({
 })
 
 
+export const logoutUser = () => ({
+  type: 'LOGOUT_USER'
+})
+
