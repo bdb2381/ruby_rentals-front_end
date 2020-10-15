@@ -3,28 +3,33 @@
 
 
 .App {
+  
   text-align: center;
   font-family: monospace;
+}
+
+a{
+  text-decoration: none;
 }
 
 .home-container{
   background-repeat: no-repeat;
   background-size: 100% ;
   padding: 1rem;
-  width: 100%;
-  height: 500px;
+  height: 30em;
   background-image: url("https://images.unsplash.com/photo-1504280390367-361c6d9f38f4");
 }
 
 .promo { 
-  color: white; 
-  font: bold 1.5em/2em Helvetica, Sans-Serif; 
-  letter-spacing: -.01em;  
-  background: rgb(0, 0, 0); /* fallback color */
-  background: rgba(0, 0, 0, 0.7);
-  padding: 10px; 
-  width: 25%;
-  height: 75%;
+  color: white;
+    font: bold 1.1rem/3rem Helvetica, Sans-Serif;
+    letter-spacing: -.01rem;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2%;
+    margin: 0 0 0 3%;
+    width: 30%;
+    height: 90%;
 }
 
 
@@ -36,6 +41,7 @@
   background: #b3aeae;
   padding: 8px;
 
+
 }
 
 .brand-wordmark{
@@ -43,28 +49,29 @@
   text-align: left;
   font-family: 'Roboto', sans-serif;
   text-decoration: none;
-  margin: 1em;
+  margin: 0 1em 0 .5em;
   letter-spacing: .12em;
 
 }
 
 .navbar {
-  display: flex;
-  justify-content: center;
+  display: flex ;
   align-items: center;
   border-radius: 4px;
   background-color: #eceff1;
   height: 5rem;
+  position: sticky;
+  top: 0; 
 }
 
 .navbar__link {
-  margin: 1em;
+  display: inline-grid;
+  margin: 0 .5em;
   font-size: 1.2em;
   font-family: 'Roboto', sans-serif;
   cursor: pointer;
   text-decoration: none;
-  letter-spacing: .3em;
-  text-indent: .3em;
+  letter-spacing: .1em;
   color: #181818;
   border-bottom: 3px solid transparent;
 }
@@ -138,16 +145,14 @@
 .card {
   cursor: pointer;
   /* changes pointer for clickable objects */
+  text-decoration: none;
   text-align: center;
   border-radius: 10px;
   border-style: solid;
-  /* background: #e1dbdb; */
   padding: 0 .8em .5rem;
   width: 16rem;
   height: max-content;
-  /* display: inline-grid; */
   margin: 1rem 2rem;  
-  /* color: #1a436b; */
 }
 
 .card .itemPhoto {
@@ -163,11 +168,12 @@
   /* font-size: 3em; */
   padding: .5em;
   text-align: center;
+  
 
 }
 .card .brand {
   font-size: 1.7em;
-  padding-bottom: .5em;
+  padding-bottom: .5em
 }
 
 .card .model{
