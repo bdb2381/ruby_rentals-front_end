@@ -25,7 +25,11 @@ class App extends React.Component {
     return (
       <div className="App">
           <Router>
-            <Navbar/>
+            <Route
+            render={(routerProps) => {
+              return <Navbar {...routerProps}/>
+            }}
+            />
             <ItemsContainer/>   
 
            

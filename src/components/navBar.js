@@ -3,57 +3,85 @@ import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {logoutUser} from '../redux/actions'
 
-
 class Navbar extends React.Component {
  
- onLogoutClick (){
+    onLogoutClick (){
     
-    // Remove the token and user data from localStorage
-    localStorage.clear()
+        // Remove the token and user data from localStorage
+        localStorage.clear()
 
-    // Remove the user object from the Redux store
-    this.props.logoutUser()
+        // Remove the user object from the Redux store
+        this.props.logoutUser()
 
-    // need to implement version of login redirect 
-    // this.props.history.push("/") 
-
+  
+        console.log("log out from NavBar")
+     
 
     }
-    
+
+   
     render(){
+        
     return(
-        <nav className="nav-wrapper">
+        <nav className="navbar">
             
                 <div>
-                    <Link to="/" className="brand-wordmark">Ruby Rentals</Link>
+                    <Link to="/" className="brand-wordmark">
+                        Ruby Rentals
+                    </Link>
                 </div>
-                
-                    <Link to="/">Home</Link>
-                    <Link to="/gear">Gear</Link> 
+
+                <div >
+                    <Link to="/"
+                    className="navbar__link">
+                        Home
+                    </Link>
                     
-                    {!localStorage.token ? (
+                    <Link to="/gear" className="navbar__link">
+                        Gear
+                    </Link> 
+                    
+                    {!localStorage.token || !this.props.currentUser ? (
                     <div>
-                        <Link to="/signup">Create Account</Link>
-                        <Link to="/login">Login</Link> 
+                        <Link to="/signup"
+                        className="navbar__link">
+                            Create Account
+                        </Link>
+
+                        <Link to="/login"
+                        className="navbar__link">
+                            Log In
+                        </Link> 
                     </div>
                     ) : (
                     <div>
-                        <Link to="/cart">Cart</Link>         
+                        <Link to="/cart"
+                        className="navbar__link">
+                            Cart
+                        </Link>         
+                        
                         <Link to="/" 
-                            onClick={() => this.onLogoutClick()} 
-                        >Logout </Link>
+                        className="navbar__link"
+                        onClick={() => this.onLogoutClick()} >
+                            Logout 
+                        </Link>
 
                     </div> 
                     )}
                      
-              
+                </div>
           
         </nav>  
     )}
+}
+
+  
+const mapStateToProps = (state) => {
+    return {currentUser: state.loginReducer.currentUser }
 }
 
 const mapDispatchToProps = dispatch => ({
     logoutUser: () => dispatch(logoutUser())
   })
   
-export default connect(null, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

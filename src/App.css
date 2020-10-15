@@ -7,6 +7,26 @@
   font-family: monospace;
 }
 
+.home-container{
+  background-repeat: no-repeat;
+  background-size: 100% ;
+  padding: 1rem;
+  width: 100%;
+  height: 500px;
+  background-image: url("https://images.unsplash.com/photo-1504280390367-361c6d9f38f4");
+}
+
+.promo { 
+  color: white; 
+  font: bold 1.5em/2em Helvetica, Sans-Serif; 
+  letter-spacing: -.01em;  
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px; 
+  width: 25%;
+  height: 75%;
+}
+
 
 /*******************/
 /*******************/
@@ -19,8 +39,43 @@
 }
 
 .brand-wordmark{
-  font-size: 35px;
+  font-size: 3em;
   text-align: left;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  margin: 1em;
+  letter-spacing: .12em;
+
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #eceff1;
+  height: 5rem;
+}
+
+.navbar__link {
+  margin: 1em;
+  font-size: 1.2em;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: .3em;
+  text-indent: .3em;
+  color: #181818;
+  border-bottom: 3px solid transparent;
+}
+
+.navbar__link:hover {
+  transform: translateY(-2px);
+}
+
+.navbar__link--active {
+  border-bottom: 3px solid #29b6f6;
+  transition: border-bottom .5s ease-in-out;
 }
 
 

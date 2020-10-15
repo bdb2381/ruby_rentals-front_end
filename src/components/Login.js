@@ -1,8 +1,7 @@
 import React from 'react'
-import {Link, Route} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {loginFetch} from '../redux/fetchActions.js'
-
 
 class Login extends React.
 Component {
@@ -19,15 +18,18 @@ Component {
 
    handleLoginSubmit = (event) => {
     event.preventDefault();
-
-    this.props.loginFetch(this.state)
     
+    console.log("before login fetch")
+    
+    this.props.loginFetch(this.state)
+        // refactor to catch errors for failed login 
+
+    this.props.history.push("/gear") 
     // upon successful login, redirect to homepage 
-    // refactor to catch errors for failed login 
-    this.props.redirect.push("/")  // redirect == history.push
-   
+
   };
 
+  
   render() {
     return (
       // <div className="one-column-grid">
@@ -80,6 +82,4 @@ const mapDispatchToProps = (dispatch ) => (
   }
 )
 
-
-
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(withRouter(Login))
