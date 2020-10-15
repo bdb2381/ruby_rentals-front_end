@@ -21,13 +21,13 @@ const CartCheckout = (props) => {
   return(
     <div className="cart-container">
       <div className="cart">
-        Items in Your Cart
-      </div>
+     
 
-      <div>
+
         {props.cartItems.map((item, i) => {
           return( 
             <div>
+             
             <div className="reserved">
               
             {item.model}<br/> 
@@ -37,7 +37,9 @@ const CartCheckout = (props) => {
             </div>
 
           <div className="financial">
-            <p>${item.day_rental_price}/day  </p> 
+            ${item.day_rental_price}/day   <br/>
+            Quantity: {item.numberOfItemsReserved} <br/>  
+            Cost: ${item.total_rental_amount}   <br/>
           </div>
 
           <div className="dates">
@@ -50,8 +52,15 @@ const CartCheckout = (props) => {
       </div>
           
         
-        <div >
-          <button className="checkoutButton">Checkout Equipment</button>
+        <div className="checkoutButton" >
+         
+          <input
+            type="submit" 
+            name="Checkout Equipment" 
+            value="Checkout Equipment" 
+            id="checkout" 
+            // className="checkoutButton"
+            />
         </div>
 
       

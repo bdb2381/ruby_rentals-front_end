@@ -45,14 +45,15 @@ handleChange(event) {
   // add startDate & endDate to the item Object
   handleSubmit = (event)=>{
     event.preventDefault()
+    const {item} = this.props
 
    this.props.addItemToCart(
      {
      ...this.props.item, 
     startDate: this.state.startDate,
     returnDate: this.state.returnDate,
-    numberOfItemsReserved: this.state.numberOfItemsReserved
-
+    numberOfItemsReserved: this.state.numberOfItemsReserved,
+    total_rental_amount: this.state.numberOfItemsReserved * item.day_rental_price
     }
     );
   }

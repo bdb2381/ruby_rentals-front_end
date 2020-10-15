@@ -212,19 +212,7 @@ a{
 /*******************/
 /*******************/
 /* BUTTONS AND INPUT TYPES*/
-.checkoutButton {
-  background-color: #e6c611;
-  border: none;
-  font-size: 1.5em;
-  color: black;
-  padding: 8px 28px;
-  text-decoration: none;
-  cursor: pointer;
-  width: 25%;
-  display: inline-grid;
-  margin: 1em;
 
-}
 
  input[type=button], input[type=submit], input[type=reset]{
   background-color: #e6c611;
@@ -250,7 +238,12 @@ a{
   width: 100%;
 }
 
+.checkoutButton {
+    border: none;
+    width: 31%;
+    display: inline-grid;
 
+}
 
 
 /*******************/
@@ -264,28 +257,31 @@ a{
 
 .cart {
   display: inline-grid;
-  width: 20rem;
-  font-size: 2em;
+  /* width: 20rem; */
+  /* font-size: 2em; */
+  letter-spacing: -.01rem;
+  text-align: left;
+  align-items: left
+
 }
 
-.reserved {
+.cart .reserved {
   
-  width: 20rem;
+  width: 10rem;
   display: inline-grid;
-  font-size: 1.2em;
+  font-size: 1.4em;
   background-color: #e6c611;
-  align-items: left
 } 
 
-.financial {
-  width: 10rem;
+.cart .financial {
   display: inline-grid;
   font-size: 1.2em;
   background-color: #7f9472;
+  margin: 1em;
 }
 
-.dates {
-  width: 10rem;
+.cart .dates {
+  /* width: 10rem; */
   display: inline-grid;
   font-size: 1.2em;
   background-color: #7f9472;
