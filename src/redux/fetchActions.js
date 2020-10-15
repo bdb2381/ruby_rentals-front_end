@@ -32,6 +32,44 @@ export const fetchItemsFailure = error => ({
 });
 
 
+//////////////////////
+// POST FETCH REQUESTS 
+
+
+export const receiptPostFetch = total => {
+
+  
+  
+  debugger
+  return dispatch => {
+    return fetch(`${API_ROOT}/receipts/`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(total)
+    })
+    
+    .then(resp => resp.json())
+    .then(data => {
+      if (data.message || data.error){
+        console.log(data.message)
+        console.log(data.error)
+        debugger
+      }
+      else {
+        console.log(data.user)
+        localStorage.setItem("token", data.jwt)
+        
+        dispatch(loginUser(data.user))
+      }
+    })
+
+  } // end first return
+
+  
+} // end receiptPostFetch
+
+
+
 
 
 

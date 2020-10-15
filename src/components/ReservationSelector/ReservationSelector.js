@@ -137,10 +137,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps= (dispatch)=>{
- 
   return {
     addItemToCart: (item) => {
-      console.log(item)
       dispatch(addItemToCart(item))}
   }
 }
@@ -148,15 +146,4 @@ const mapDispatchToProps= (dispatch)=>{
 
   export default connect(mapStateToProps, mapDispatchToProps)(ReservationSelector)
 
-// onst initialState = {
-//   itemsInCart: {
-//     items: [{
-//       startDate: null,
-//       endDate: null,
-//       inventory: null,
-//       amount: 0
-//     }]
-//   },
-//   totalNumberOfItems: 0
-// }
 
