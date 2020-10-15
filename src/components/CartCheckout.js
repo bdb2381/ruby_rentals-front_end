@@ -17,12 +17,7 @@ class CartCheckout extends React.Component{
     
       const grandTotal = {total_rental_amount: total}
      
-       
-  
-
-   
-
-     this.props.receiptPostFetch(grandTotal)
+      this.props.receiptPostFetch(grandTotal)
 
     
 
