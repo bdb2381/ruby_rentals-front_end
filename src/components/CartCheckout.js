@@ -74,72 +74,55 @@ return ({
   } // end handleClick 
 
 render(){
+  let cartStatus = this.props.cartStatus
+
   return(
     <div className="cart-container">
-     <h1>Your Reservation</h1> 
+    <h1>Your Reservation</h1> 
     
+    
+    {
+
+    cartStatus == "ITEM_ADDED" ? 
+<>
     <div className="cart-grid">
+              <div className="cartHeader">Item Description</div>
+              <div className="cartHeader">Pickup Date</div>
+              <div className="cartHeader">Return Date</div>
+              <div className="cartHeader">Each/Day</div>
+              <div className="cartHeader">Quantity</div>
+              <div className="cartHeader">Total</div>
 
-
-    <div className="cartHeader">Item Description</div>
-    <div className="cartHeader">Pickup Date</div>
-    <div className="cartHeader">Return Date</div>
-    <div className="cartHeader">Each/Day</div>
-    <div className="cartHeader">Quantity</div>
-    <div className="cartHeader">Total</div>
-  
-            <div className="cartDesc">
-            Mission Backpack<br/> 
-            Black Diamond<br/>
-            <br/>
-            </div>
-            <div className="dates">1-20-2020</div>
-            <div className="dates">1-20-2020 </div>
-
-          <div className="financial">$30 </div>
-          <div className="financial">1</div>
-          <div className="financial">$30 </div>
-            
-           
-            {/* ******** */}
+    
         {this.props.cartItems.map((item, i) => {
           return( 
-            <div>
-
-            <div className="reserved">
-              
-            {item.model}<br/> 
-            {item.brand}<br/>
-            {item.item_type}<br/>
-
-            </div>
-
-          <div className="financial">
-            ${item.day_rental_price}/day   <br/>
-            Quantity: {item.numberOfItemsReserved} <br/>  
-            Cost: ${item.total_rental_amount}   <br/>
-          </div>
-
-          <div className="dates">
-            Pickup: {item.startDate}<br/>
-            Return: {item.returnDate} 
-          </div>
-
-          </div> 
+            <>
+              <div className="cartDesc">
+              {item.model} {item.item_type}<br/> 
+              {item.brand}<br/>
+              </div>
+              <div className="dates">{item.startDate}</div>
+              <div className="dates">{item.returnDate}</div>
+              <div className="financial">$ ${item.day_rental_price} </div>
+              <div className="financial">{item.numberOfItemsReserved}</div>
+              <div className="financial">${item.total_rental_amount} </div>
+            </>
         )})}
-      </div>
-        
-        <div className="checkoutButton" >
-
+    </div> 
+    <div className="checkoutButton" >
           <input
             onClick={this.handleClick}
             type="submit" 
             name="Complete Reservation" 
             value="Complete Reservation" 
             id="checkout" 
-            // className="checkoutButton"
             />
-        </div>
+      </div>
+      </>
+      :
+      <div>The cart is empty.</div>
+      }
+        
 
     </div>
   )
@@ -150,6 +133,7 @@ render(){
 const mapStateToProps = (state) => {
   return {
     cartItems: state.cart.cartItems, 
+    cartStatus: state.cart.cartStatus,
     currentUser: state.login.currentUser
    }
 }

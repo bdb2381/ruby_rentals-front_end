@@ -3,6 +3,7 @@
 const initialState = {
   cartItems: [],
   purchasedItems:[],
+  cartStatus: "CART_EMPTY"
 }
 
 
@@ -15,15 +16,20 @@ export default function cartReducer(state = initialState, action){
         return {
           ...state,
           cartItems:[...state.cartItems, action.payload],
-          // startDate: [...state.startDate, action.payload ]
+          cartStatus: "ITEM_ADDED"
         }
 
       case "PURCHASE_SUCCESS":
         return {
           purchasedItems: action.payload,
           cartItems: []  // clear cart upon success
+          
         }
-
+      case "ITEM_ADDED":
+          return {
+            ...state,
+            
+          }
   default:
     // just incase, return state
     return state
