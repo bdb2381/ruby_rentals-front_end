@@ -7,8 +7,8 @@ import loginReducer from "./loginReducer"
 
 
 export default combineReducers({ 
-  itemsReducer,
-  currentItemReducer,
-  cartReducer,
-  loginReducer
+  item: itemsReducer,
+  currentItem: currentItemReducer,
+  cart: cartReducer,
+  login: loginReducer
  });

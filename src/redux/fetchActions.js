@@ -35,6 +35,39 @@ export const fetchItemsFailure = error => ({
 //////////////////////
 // POST FETCH REQUESTS 
 
+export const reservationPostFetch = XXX => {
+
+  return dispatch => {
+    return fetch(`${API_ROOT}/reservations/`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(XXX)
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      if (data.message || data.error){
+        console.log(data.message)
+        console.log(data.error)
+        
+      }
+      else {
+        console.log(data)
+        // send receipt.id to reservation post  
+
+
+      }
+    })
+  } // end first return 
+} // end receiptPostFetch
+
+
+
+
+
+
+
+
+
 
 export const receiptPostFetch = total => {
 
@@ -53,15 +86,12 @@ export const receiptPostFetch = total => {
       }
       else {
         console.log(data)
-        // localStorage.setItem("token", data.jwt)
-        
-        // dispatch(loginUser(data.user))
+        // send receipt.id to reservation post  
+
+
       }
     })
-
-  } // end first return
-
-  
+  } // end first return 
 } // end receiptPostFetch
 
 

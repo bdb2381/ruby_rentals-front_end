@@ -48,7 +48,7 @@ const mapDispatchToProps = (dispatch ) => {
 
 const mapStateToProps = (state) => {
   // console.log(state)
-  return {allItems: state.itemsReducer.allItems }
+  return {allItems: state.item.allItems }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemsContainer)

@@ -16,7 +16,7 @@ const ItemsList = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  return {allItems: state.itemsReducer.allItems }
+  return {allItems: state.item.allItems }
 }
 
 

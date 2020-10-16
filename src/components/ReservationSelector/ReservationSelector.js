@@ -128,11 +128,11 @@ handleChange(event) {
 
 const mapStateToProps = (state) => {
   return {
-    item: state.currentItemReducer.item,      // the item current on display
+    item: state.currentItem.item,      // the item current on display
     cartItems: state.cartItems,                // for items added to cart
     startDate: state.startDate,
     endDate: state.endDate
-    // itemsInCart: state.cartReducer.itemsInCart 
+    // itemsInCart: state.cart.itemsInCart 
   }
 }
 
