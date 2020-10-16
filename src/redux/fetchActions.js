@@ -35,13 +35,13 @@ export const fetchItemsFailure = error => ({
 //////////////////////
 // POST FETCH REQUESTS 
 
-export const reservationPostFetch = XXX => {
-
+export const reservationPostFetch = reservation => {
+debugger
   return dispatch => {
     return fetch(`${API_ROOT}/reservations/`, {
     method: "POST",
     headers: headers,
-    body: JSON.stringify(XXX)
+    body: JSON.stringify(reservation)
     })
     .then(resp => resp.json())
     .then(data => {
