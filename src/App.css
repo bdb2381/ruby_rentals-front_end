@@ -216,14 +216,15 @@ a{
 
  input[type=button], input[type=submit], input[type=reset]{
   background-color: #e6c611;
-  border: none;
-  font-size: 1.5em;
-  color: black;
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-  width: 100%;
+    border: none;
+    font-size: 1.5em;
+    color: black;
+    padding: 11px 25px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .signupButton {
@@ -233,16 +234,18 @@ a{
   color: black;
   padding: 16px 32px;
   text-decoration: none;
-  margin: 4px 2px;
+  margin: 2px 2px;
   cursor: pointer;
   width: 100%;
+  border-radius: 10px;
+
 }
 
 .checkoutButton {
     border: none;
     width: 31%;
     display: inline-grid;
-
+    border-radius: 10px;
 }
 
 
@@ -251,40 +254,46 @@ a{
 /* CART and CHECKOUT */
 
 .cart-container {
-  background-color: #9f9e9a;
-  padding: 1em;
+  background-color: #e8e7e5;
+  padding: .2em;
+
 }
 
-.cart {
+
+.cart-grid {
   display: inline-grid;
-  /* width: 20rem; */
-  /* font-size: 2em; */
+  grid-template-columns: auto auto auto auto auto auto;
   letter-spacing: -.01rem;
-  text-align: left;
-  align-items: left
-
+  padding: 5px; 
+  margin: 10px;
 }
 
-.cart .reserved {
-  
-  width: 10rem;
-  display: inline-grid;
+.cartHeader{
+  font-size: .8em;
+  margin: .2em;
+  align-items: center;
+  text-align: center;
+}
+
+
+.cartDesc {
+  /* width: 10rem; */
   font-size: 1.4em;
-  background-color: #e6c611;
+  margin: 1em;
+  align-items: left;
+  text-align: left;
 } 
 
-.cart .financial {
-  display: inline-grid;
+.financial {
   font-size: 1.2em;
-  background-color: #7f9472;
-  margin: 1em;
+  margin: .6em;
+  padding: .3em
 }
 
-.cart .dates {
+.dates {
   /* width: 10rem; */
-  display: inline-grid;
   font-size: 1.2em;
-  background-color: #7f9472;
+  margin: 1em;
 }
 
 

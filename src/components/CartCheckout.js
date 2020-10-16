@@ -49,7 +49,7 @@ return ({
     end_date: reserveredGear.returnDate,
     user_id: currentUser.id,
     inventory_id: selectedInventory.id,
-    receipt_id: 1
+    receipt_id: 2
   }
 
 // below required to create validation
@@ -76,8 +76,32 @@ return ({
 render(){
   return(
     <div className="cart-container">
-      <div className="cart">
+     <h1>Your Reservation</h1> 
+    
+    <div className="cart-grid">
 
+
+    <div className="cartHeader">Item Description</div>
+    <div className="cartHeader">Pickup Date</div>
+    <div className="cartHeader">Return Date</div>
+    <div className="cartHeader">Each/Day</div>
+    <div className="cartHeader">Quantity</div>
+    <div className="cartHeader">Total</div>
+  
+            <div className="cartDesc">
+            Mission Backpack<br/> 
+            Black Diamond<br/>
+            <br/>
+            </div>
+            <div className="dates">1-20-2020</div>
+            <div className="dates">1-20-2020 </div>
+
+          <div className="financial">$30 </div>
+          <div className="financial">1</div>
+          <div className="financial">$30 </div>
+            
+           
+            {/* ******** */}
         {this.props.cartItems.map((item, i) => {
           return( 
             <div>
@@ -104,15 +128,14 @@ render(){
           </div> 
         )})}
       </div>
-          
         
         <div className="checkoutButton" >
 
           <input
             onClick={this.handleClick}
             type="submit" 
-            name="Checkout Equipment" 
-            value="Checkout Equipment" 
+            name="Complete Reservation" 
+            value="Complete Reservation" 
             id="checkout" 
             // className="checkoutButton"
             />

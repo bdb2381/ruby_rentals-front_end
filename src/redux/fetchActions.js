@@ -32,11 +32,18 @@ export const fetchItemsFailure = error => ({
 });
 
 
+export const postCartSuccess = reservation => ({
+  type: "PURCHASE_SUCCESS",
+  payload: (reservation)
+})
+
+
+
 //////////////////////
 // POST FETCH REQUESTS 
 
 export const reservationPostFetch = reservation => {
-debugger
+
   return dispatch => {
     return fetch(`${API_ROOT}/reservations/`, {
     method: "POST",
@@ -52,6 +59,7 @@ debugger
       }
       else {
         console.log(data)
+        dispatch(postCartSuccess(reservation))
         // send receipt.id to reservation post  
 
 
@@ -62,15 +70,7 @@ debugger
 
 
 
-
-
-
-
-
-
-
 export const receiptPostFetch = total => {
-
   return dispatch => {
     return fetch(`${API_ROOT}/receipts/`, {
     method: "POST",
