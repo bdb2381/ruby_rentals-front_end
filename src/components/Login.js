@@ -3,8 +3,7 @@ import {Link, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {loginFetch} from '../redux/fetchActions.js'
 
-class Login extends React.
-Component {
+class Login extends React.Component {
 
   state = {
     email: "",

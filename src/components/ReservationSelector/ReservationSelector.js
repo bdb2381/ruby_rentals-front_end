@@ -64,13 +64,12 @@ handleChange(event) {
    inventoryAvailable (){
     const {inventory} = this.props.item 
     const {item} = this.props
-    let cost = item.day_rental_price
-    let id = item.id
-  
+    // let cost = item.day_rental_price
+      
     let numbers = inventory.map((item, i) => {
       return(
         <option 
-        key={id} 
+        key={i} 
         value={i}
         > {i} </option>
       )

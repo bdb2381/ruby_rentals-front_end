@@ -43,7 +43,7 @@ export const postCartSuccess = reservation => ({
 // POST FETCH REQUESTS 
 
 export const reservationPostFetch = reservation => {
-
+console.log(reservation)
   return dispatch => {
     return fetch(`${API_ROOT}/reservations/`, {
     method: "POST",
