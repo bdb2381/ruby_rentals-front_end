@@ -42,14 +42,18 @@ export const postReceiptSuccess = dataID => ({
   payload: (dataID)
 })
 
+export const postReceiptBegin = () => ({
+  type: "RECEIPT_BEGIN_FETCH_POST"
+})
+
 
 //////////////////////
 // POST FETCH REQUESTS 
 
-export const reservationPostFetch = reservation => {
+export function reservationPostFetch(reservation){
 console.log(reservation)
   return dispatch => {
-    return fetch(`${API_ROOT}/reservations/`, {
+    fetch(`${API_ROOT}/reservations/`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify(reservation)
@@ -57,9 +61,7 @@ console.log(reservation)
     .then(resp => resp.json())
     .then(data => {
       if (data.message || data.error){
-        console.log(data.message)
         console.log(data.error)
-        
       }
       else {
         console.log(data)
@@ -74,28 +76,28 @@ console.log(reservation)
 
 
 
-export const receiptPostFetch = total => {
+export function receiptPostFetch(total) {
   
   return dispatch => {
-    return fetch(`${API_ROOT}/receipts/`, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify({ total_rental_amount: total})
-    })
-    .then(resp => resp.json())
-    .then(data => {
-      if (data.message || data.error){
-        console.log(data.message)
-        console.log(data.error)
-        
-      }
-      else {
-console.log("receipt post fetch", data.receipt.id)
-        
-      await  dispatch(postReceiptSuccess(data.receipt.id))
-
-      }
-    })
+    dispatch(postReceiptBegin())
+      fetch(`${API_ROOT}/receipts/`, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({ total_rental_amount: total})
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.message || data.error){
+          console.log(data.message)
+          console.log(data.error)
+          
+        }
+        else {
+  console.log("receipt post fetch", data.receipt.id)
+       return dispatch(postReceiptSuccess(data.receipt.id))
+        debugger
+        }
+      })
   } // end first return 
 } // end receiptPostFetch
 

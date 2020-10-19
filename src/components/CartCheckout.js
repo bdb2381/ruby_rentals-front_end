@@ -9,9 +9,10 @@ class CartCheckout extends React.Component{
   handleClick = ()=>{
 
     this.props.receiptPostFetch(this.props.cartGrandTotal)
-  
+debugger
     const {cartItems, currentUser} = this.props
 console.log(this.props.receiptID)
+debugger
     for (let i = 0; i <= cartItems.length-1; i++){
 
       // REFACTOR: get several items if several requested
@@ -33,12 +34,12 @@ console.log(this.props.receiptID)
       inventory_id: selectedInventory.id, 
       receipt_id: this.props.receiptID
     }
-
+debugger
 console.log(reservationDetails)
 
-
+  if (this.props.receiptPostFetchStart === false){
     this.props.reservationPostFetch(reservationDetails)
-
+  }
     } // end for loop  
 
 // below required to create validation
@@ -134,7 +135,8 @@ const mapStateToProps = (state) => {
     cartStatus: state.cart.cartStatus,
     currentUser: state.login.currentUser,
     cartGrandTotal: state.cart.cartGrandTotal,
-    receiptID: state.cart.receiptID
+    receiptID: state.cart.receiptID,
+    receiptPostFetchStart: state.cart.receiptPostFetchStart
    }
 }
 
