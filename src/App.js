@@ -30,6 +30,8 @@ class App extends React.Component {
               return <Navbar {...routerProps}/>
             }}
             />
+
+             {/* contains routing logic for items */}
             <ItemsContainer/>   
 
            
@@ -66,8 +68,6 @@ class App extends React.Component {
           path="/"
           component={HomeContainer}
           />
-
-
 
           </Router>
         </div>

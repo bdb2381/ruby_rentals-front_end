@@ -15,7 +15,7 @@ class Login extends React.Component {
       [event.target.name]: event.target.value });
   };
 
-   handleLoginSubmit = (event) => {
+  handleLoginSubmit = (event) => {
     event.preventDefault();
     
     console.log("before login fetch")

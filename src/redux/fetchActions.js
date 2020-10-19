@@ -34,26 +34,34 @@ export const fetchItemsFailure = error => ({
 
 export const postCartSuccess = reservation => ({
   type: "PURCHASE_SUCCESS",
-  payload: (reservation)
+  payload: {reservation}
 })
 
 export const postReceiptSuccess = dataID => ({
   type: "RECEIPT_SUCCESS",
-  payload: (dataID)
+  payload: {dataID}
 })
 
 export const postReceiptBegin = () => ({
   type: "RECEIPT_BEGIN_FETCH_POST"
 })
 
+export const postReservationBegin = () => (
+  
+  console.log("inside action creator of post rese"),
+  {
+  type: "RESERVATION_BEGIN_FETCH_POST"
+})
 
 //////////////////////
 // POST FETCH REQUESTS 
 
-export function reservationPostFetch(reservation){
+export const reservationPostFetch = (reservation) => {
 console.log(reservation)
-  return dispatch => {
-    fetch(`${API_ROOT}/reservations/`, {
+console.log("in reservation post fetch")
+  // return dispatch => {
+    // dispatch(postReservationBegin())
+    return fetch(`${API_ROOT}/reservations/`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify(reservation)
@@ -65,25 +73,27 @@ console.log(reservation)
       }
       else {
         console.log(data)
-        dispatch(postCartSuccess(reservation))
-        // send receipt.id to reservation post  
+        // dispatch(postCartSuccess(reservation))
 
 
       }
-    })
+    })  
   } // end first return 
-} // end receiptPostFetch
+// } // end receiptPostFetch
 
 
 
-export function receiptPostFetch(total) {
+export function receiptPostFetch(total, cartItems, currentUser, reservationPostFetch) {
   
   return dispatch => {
     dispatch(postReceiptBegin())
-      fetch(`${API_ROOT}/receipts/`, {
+     return fetch(`${API_ROOT}/receipts/`, {
       method: "POST",
       headers: headers,
-      body: JSON.stringify({ total_rental_amount: total})
+      body: JSON.stringify({ 
+        total_rental_amount: total,
+        tax: 0 // hardcode until implemented
+        })
       })
       .then(resp => resp.json())
       .then(data => {
@@ -93,15 +103,42 @@ export function receiptPostFetch(total) {
           
         }
         else {
-  console.log("receipt post fetch", data.receipt.id)
-       return dispatch(postReceiptSuccess(data.receipt.id))
-        debugger
+
+console.log(data.receipt.id)
+
+    for (let i = 0; i <= cartItems.length-1; i++){
+
+      // REFACTOR: get several items if several requested
+      // get available-to-rent inventory item
+      let selectedInventory = cartItems[i].inventory.find(x => {
+        if (x.rental_status === true){
+        return x
+      }})
+    
+    const reserveredGear =  {numberOfItemsReserved: cartItems[i].numberOfItemsReserved, returnDate: cartItems[i].returnDate, startDate: cartItems[i].startDate,  amount_available: cartItems[i].amount_available}
+
+      // creates object to send POST fetch 
+    let reservationDetails = {
+      start_date: reserveredGear.startDate, 
+      end_date: reserveredGear.returnDate,
+      user_id: currentUser.id,
+      inventory_id: selectedInventory.id, 
+      receipt_id: data.receipt.id
+    }
+
+
+console.log(reservationDetails)
+
+    // persist reservationDetails to database
+      reservationPostFetch(reservationDetails)
+
+  } // end for loop 
+
+
         }
       })
   } // end first return 
 } // end receiptPostFetch
-
-
 
 
 

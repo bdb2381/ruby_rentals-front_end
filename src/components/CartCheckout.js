@@ -7,65 +7,31 @@ import {reservationPostFetch} from '../redux/fetchActions'
 class CartCheckout extends React.Component{
     
   handleClick = ()=>{
-
-    this.props.receiptPostFetch(this.props.cartGrandTotal)
-debugger
+    
     const {cartItems, currentUser} = this.props
-console.log(this.props.receiptID)
-debugger
-    for (let i = 0; i <= cartItems.length-1; i++){
-
-      // REFACTOR: get several items if several requested
-      // get available-to-rent inventory item
-      let selectedInventory = cartItems[i].inventory.find(x => {
-        if (x.rental_status === true){
-        return x
-      }})
-
     
-    const reserveredGear =  {numberOfItemsReserved: cartItems[i].numberOfItemsReserved, returnDate: cartItems[i].returnDate, startDate: cartItems[i].startDate,  amount_available: cartItems[i].amount_available}
-
-      // creates object to send POST fetch 
-    
-    let reservationDetails = {
-      start_date: reserveredGear.startDate, 
-      end_date: reserveredGear.returnDate,
-      user_id: currentUser.id,
-      inventory_id: selectedInventory.id, 
-      receipt_id: this.props.receiptID
-    }
-debugger
-console.log(reservationDetails)
-
-  if (this.props.receiptPostFetchStart === false){
-    this.props.reservationPostFetch(reservationDetails)
-  }
-    } // end for loop  
-
+    this.props.receiptPostFetch(this.props.cartGrandTotal, this.props.cartItems, this.props.currentUser, reservationPostFetch)
+  
 // below required to create validation
     // total_rental_amount: total,
     // rental_status: selectedInventory.rental_status,
     // requested_quanitity: numberOfItemsReserved
 
      
-
+console.log("end of handleClick")
 
   } // end handleClick 
 
 
 //   produceGrandTotal = () => {
 //   // Produce grand total amount user pays
-
 //   let total =  this.props.cartItems.reduce((prev, cur) => {
 //     return prev + cur.total_rental_amount
 //   }, 0);
-
 //   const grandTotal = {
 //     total_rental_amount: total
 //   }
-  
 //   return grandTotal
-
 // } // end produceGrandTotal
 
 
@@ -152,8 +118,8 @@ const mapDispatchToProps = dispatch => {
     reservationPostFetch:  (reservation) => {
       dispatch(reservationPostFetch(reservation))} ,
 
-      receiptPostFetch:  (cartGrandTotal) => {
-      dispatch(receiptPostFetch(cartGrandTotal))}
+      receiptPostFetch:  (cartGrandTotal, cartItems, currentUser, reservationPostFetch) => {
+        dispatch(receiptPostFetch(cartGrandTotal,cartItems, currentUser, reservationPostFetch ))}
 
   }
 }
