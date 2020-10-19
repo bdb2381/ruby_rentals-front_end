@@ -4,7 +4,8 @@ const initialState = {
   cartItems: [],
   purchasedItems:[],
   cartStatus: "CART_EMPTY",
-  cartGrandTotal: 0
+  cartGrandTotal: 0,
+  receiptID: null
 }
 
 
@@ -25,8 +26,14 @@ export default function cartReducer(state = initialState, action){
       case "PURCHASE_SUCCESS":
         return {
           purchasedItems: action.payload,
-          cartItems: []  // clear cart upon success
-          
+          cartItems: [],  // reset cart upon success
+          // receiptID: null // reset receipt
+        }
+      
+      case "RECEIPT_SUCCESS":
+        return {
+          receiptID: action.payload
+          // payload is a pure integer
         }
       
   default:

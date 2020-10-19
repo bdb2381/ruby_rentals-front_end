@@ -37,6 +37,10 @@ export const postCartSuccess = reservation => ({
   payload: (reservation)
 })
 
+export const postReceiptSuccess = dataID => ({
+  type: "RECEIPT_SUCCESS",
+  payload: (dataID)
+})
 
 
 //////////////////////
@@ -71,23 +75,24 @@ console.log(reservation)
 
 
 export const receiptPostFetch = total => {
+  
   return dispatch => {
     return fetch(`${API_ROOT}/receipts/`, {
     method: "POST",
     headers: headers,
-    body: JSON.stringify(total)
+    body: JSON.stringify({ total_rental_amount: total})
     })
     .then(resp => resp.json())
     .then(data => {
       if (data.message || data.error){
         console.log(data.message)
         console.log(data.error)
-        debugger
+        
       }
       else {
-        console.log(data)
-        // send receipt.id to reservation post  
-
+console.log("receipt post fetch", data.receipt.id)
+        
+      await  dispatch(postReceiptSuccess(data.receipt.id))
 
       }
     })

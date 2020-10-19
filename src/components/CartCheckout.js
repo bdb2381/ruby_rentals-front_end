@@ -7,14 +7,17 @@ import {reservationPostFetch} from '../redux/fetchActions'
 class CartCheckout extends React.Component{
     
   handleClick = ()=>{
+
+    this.props.receiptPostFetch(this.props.cartGrandTotal)
+  
     const {cartItems, currentUser} = this.props
-    
+console.log(this.props.receiptID)
     for (let i = 0; i <= cartItems.length-1; i++){
 
       // REFACTOR: get several items if several requested
       // get available-to-rent inventory item
       let selectedInventory = cartItems[i].inventory.find(x => {
-        if (x.rental_status == true){
+        if (x.rental_status === true){
         return x
       }})
 
@@ -22,13 +25,17 @@ class CartCheckout extends React.Component{
     const reserveredGear =  {numberOfItemsReserved: cartItems[i].numberOfItemsReserved, returnDate: cartItems[i].returnDate, startDate: cartItems[i].startDate,  amount_available: cartItems[i].amount_available}
 
       // creates object to send POST fetch 
+    
     let reservationDetails = {
       start_date: reserveredGear.startDate, 
       end_date: reserveredGear.returnDate,
       user_id: currentUser.id,
       inventory_id: selectedInventory.id, 
-      receipt_id: 1
+      receipt_id: this.props.receiptID
     }
+
+console.log(reservationDetails)
+
 
     this.props.reservationPostFetch(reservationDetails)
 
@@ -40,7 +47,6 @@ class CartCheckout extends React.Component{
     // requested_quanitity: numberOfItemsReserved
 
      
-  // this.props.receiptPostFetch(grandTotal)
 
 
   } // end handleClick 
@@ -73,11 +79,8 @@ render(){
   return(
     <div className="cart-container">
     <h1>Your Reservation</h1> 
-    
-    
-    {
-
-    cartStatus == "ITEM_ADDED" ? 
+      
+    { cartStatus === "ITEM_ADDED" ? 
 <>
     <div className="cart-grid">
               <div className="cartHeader">Item Description</div>
@@ -130,7 +133,8 @@ const mapStateToProps = (state) => {
     cartItems: state.cart.cartItems, 
     cartStatus: state.cart.cartStatus,
     currentUser: state.login.currentUser,
-    cartGrandTotal: state.cart.cartGrandTotal
+    cartGrandTotal: state.cart.cartGrandTotal,
+    receiptID: state.cart.receiptID
    }
 }
 
@@ -143,9 +147,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    reservationPostFetch:  (XXX) => {
-      dispatch(reservationPostFetch(XXX))
-    }
+    reservationPostFetch:  (reservation) => {
+      dispatch(reservationPostFetch(reservation))} ,
+
+      receiptPostFetch:  (cartGrandTotal) => {
+      dispatch(receiptPostFetch(cartGrandTotal))}
+
   }
 }
 
