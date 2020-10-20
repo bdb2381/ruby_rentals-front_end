@@ -13,23 +13,25 @@ a{
 }
 
 .home-container{
+  position: relative;
   background-repeat: no-repeat;
   background-size: 100% ;
-  padding: 1rem;
+  padding: 0rem;
   height: 30em;
   background-image: url("https://images.unsplash.com/photo-1504280390367-361c6d9f38f4");
 }
 
 .promo { 
   color: white;
-    font: bold 1.1rem/3rem Helvetica, Sans-Serif;
-    letter-spacing: -.01rem;
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.7);
-    padding: 2%;
-    margin: 0 0 0 3%;
-    width: 30%;
-    height: 90%;
+font: bold 1.1rem/3rem Helvetica, Sans-Serif;
+letter-spacing: -.01rem;
+background: rgb(0, 0, 0);
+background: rgba(0, 0, 0, 0.7);
+padding: 2%;
+margin: 1.5% 0 0 3%;
+width: 30%;
+/* height: 90%; */
+position: absolute;
 }
 
 
@@ -217,7 +219,7 @@ a{
  input[type=button], input[type=submit], input[type=reset]{
   background-color: #e6c611;
     border: none;
-    font-size: 3vh;
+    font-size: 1.8vw;
     color: black;
     padding: 11px 25px;
     text-decoration: none;
@@ -254,7 +256,7 @@ a{
 /* CART and CHECKOUT */
 
 .cart-container {
-  background-color: #e8e7e5;
+  background-color: #c1c0be5f;
   padding: .2em;
 
 }
@@ -304,7 +306,13 @@ a{
   text-align: center;
 }
 
-
+.empty{
+  font-size: 1.5em;
+  margin: 7em;
+  align-items: right;
+  text-align: center;
+  
+}
 
 
 

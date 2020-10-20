@@ -80,7 +80,7 @@ class CartCheckout extends React.Component{
 
 displayCartIsEmpty = () => {
   if ( this.props.cartStatus == "CART_EMPTY" || this.props.cartStatus == "ITEM_REMOVED" && this.props.cartItems.length == 0){
-    return (<div>The cart is empty.</div>)
+    return (<div className="empty">The cart is empty.</div>)
   } 
 }
 

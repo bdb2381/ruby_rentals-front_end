@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Home from '../components/Home'
-
+import ItemsList from '../components/ItemsList'
 
 
 
@@ -12,8 +12,7 @@ return(
   <div>
   
     <Home/>
-    
-    
+    <ItemsList/>
 
   </div>
 

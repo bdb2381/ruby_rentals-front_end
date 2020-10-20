@@ -9,6 +9,9 @@ class Home extends Component{
 
         return(
             <div className="home-container">
+                
+                
+
                 <div className="promo">
                     <h1>It is Fall.</h1>
                     <h2>Time To Camp Under The Stars</h2>
