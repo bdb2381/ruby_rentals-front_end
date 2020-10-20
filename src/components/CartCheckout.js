@@ -1,47 +1,35 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {receiptPostFetch} from '../redux/fetchActions.js'
+import {receiptPostFetch, postCartSuccess} from '../redux/fetchActions.js'
 import {reservationPostFetch} from '../redux/fetchActions'
 
 
 class CartCheckout extends React.Component{
     
   handleClick = ()=>{
+    // run two nested fetch requests. 
+    // 1) Post receipt which then calls 2) post reservation data with receipt id
+
+    const {cartGrandTotal, cartItems, currentUser} = this.props
     
-    const {cartItems, currentUser} = this.props
-    
-    this.props.receiptPostFetch(this.props.cartGrandTotal, this.props.cartItems, this.props.currentUser, reservationPostFetch)
+  this.props.receiptPostFetch(cartGrandTotal, cartItems, currentUser, reservationPostFetch)
   
 // below required to create validation
     // total_rental_amount: total,
     // rental_status: selectedInventory.rental_status,
     // requested_quanitity: numberOfItemsReserved
 
-     
+
+    this.props.postCartSuccess()
+    debugger
+
 console.log("end of handleClick")
 
   } // end handleClick 
 
 
-//   produceGrandTotal = () => {
-//   // Produce grand total amount user pays
-//   let total =  this.props.cartItems.reduce((prev, cur) => {
-//     return prev + cur.total_rental_amount
-//   }, 0);
-//   const grandTotal = {
-//     total_rental_amount: total
-//   }
-//   return grandTotal
-// } // end produceGrandTotal
-
-
-
-
-
-
 render(){
   let cartStatus = this.props.cartStatus
-  
   
   return(
     <div className="cart-container">
@@ -87,8 +75,7 @@ render(){
       :
       <div>The cart is empty.</div>
       }
-        
-
+  
     </div>
   )
 }
@@ -115,8 +102,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    reservationPostFetch:  (reservation) => {
-      dispatch(reservationPostFetch(reservation))} ,
+    postCartSuccess:  (reservation) => {
+      dispatch(postCartSuccess(reservation))} ,
+
+    reservationPostFetch:  () => {
+      dispatch(reservationPostFetch())} ,
 
       receiptPostFetch:  (cartGrandTotal, cartItems, currentUser, reservationPostFetch) => {
         dispatch(receiptPostFetch(cartGrandTotal,cartItems, currentUser, reservationPostFetch ))}

@@ -107,32 +107,28 @@ export function receiptPostFetch(total, cartItems, currentUser, reservationPostF
 console.log(data.receipt.id)
 
     for (let i = 0; i <= cartItems.length-1; i++){
+          // REFACTOR selectedInventory to allow selecting several items if several requested
+          // get available-to-rent inventory item
+          let selectedInventory = cartItems[i].inventory.find(x => {
+            if (x.rental_status === true){
+            return x
+          }})
+        
+        const reservedGear =  {numberOfItemsReserved: cartItems[i].numberOfItemsReserved, returnDate: cartItems[i].returnDate, startDate: cartItems[i].startDate,  amount_available: cartItems[i].amount_available}
 
-      // REFACTOR: get several items if several requested
-      // get available-to-rent inventory item
-      let selectedInventory = cartItems[i].inventory.find(x => {
-        if (x.rental_status === true){
-        return x
-      }})
-    
-    const reserveredGear =  {numberOfItemsReserved: cartItems[i].numberOfItemsReserved, returnDate: cartItems[i].returnDate, startDate: cartItems[i].startDate,  amount_available: cartItems[i].amount_available}
+          // creates object to send POST fetch 
+        let reservationDetails = {
+          start_date: reservedGear.startDate, 
+          end_date: reservedGear.returnDate,
+          user_id: currentUser.id,
+          inventory_id: selectedInventory.id, 
+          receipt_id: data.receipt.id
+        }
 
-      // creates object to send POST fetch 
-    let reservationDetails = {
-      start_date: reserveredGear.startDate, 
-      end_date: reserveredGear.returnDate,
-      user_id: currentUser.id,
-      inventory_id: selectedInventory.id, 
-      receipt_id: data.receipt.id
-    }
+        // persist reservationDetails to database
+          reservationPostFetch(reservationDetails)
 
-
-console.log(reservationDetails)
-
-    // persist reservationDetails to database
-      reservationPostFetch(reservationDetails)
-
-  } // end for loop 
+      } // end for loop 
 
 
         }
