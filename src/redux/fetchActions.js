@@ -57,8 +57,7 @@ export const postReservationBegin = () => (
 // POST FETCH REQUESTS 
 
 export const reservationPostFetch = (reservation) => {
-console.log(reservation)
-console.log("in reservation post fetch")
+console.log("in res post fetch", reservation)
   return dispatch => {
     dispatch(postReservationBegin())
     return fetch(`${API_ROOT}/reservations/`, {
@@ -72,9 +71,7 @@ console.log("in reservation post fetch")
         console.log(data.error)
       }
       else {
-        console.log(data)
-        // dispatch(postCartSuccess(reservation))
-
+        console.log("res post fetch finish" , data)
 
       }
     })  

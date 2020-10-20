@@ -53,7 +53,6 @@ console.log(action.payload)
         }
 
       case "RESERVATION_BEGIN_FETCH_POST":
-console.log(action.payload)
         return {
           ...state,
           reservationPostFetchStart: true

@@ -85,7 +85,7 @@ displayCartIsEmpty = () => {
 }
 
 displayCartConfirmation = () => {
-  if (this.props.cartStatus == "c"){
+  if (this.props.cartStatus == "PURCHASED"){
   return(
     <>
       <h1>Order Confirmed</h1> 

@@ -1,6 +1,7 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-const CartGridHeader = () => {
+const CartGridHeader = (props) => {
 
   return (
     <>
@@ -10,10 +11,25 @@ const CartGridHeader = () => {
       <div className="cartHeader">Each/Day</div>
       <div className="cartHeader">Quantity</div>
       <div className="cartHeader">Total</div>
-      <div className="cartHeader">Remove Item</div>
+      {/* <div className="cartHeader">Remove Item</div> */}
+      {props.cartStatus == "ITEM_ADDED" ? (<div className="cartHeader">Remove Item</div>
+      ):(<div></div>) 
+     }
+ 
+ {/* {props.cartStatus == "ITEM_ADDED" && (<div className="cartHeader">Remove Item</div>
+      )
+     } */}
+
+
+
     </>
   )
 
 }
+const mapStateToProps = (state) => {
+  return {
+    cartStatus: state.cart.cartStatus    
+   }
+}
 
-export default CartGridHeader
+export default connect(mapStateToProps)( CartGridHeader)

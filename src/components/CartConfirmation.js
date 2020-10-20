@@ -18,9 +18,10 @@ return(
 
     {this.props.purchasedItems.map(item => {
       return(
-      <>
-        <CartCard item={item}/>
-      </>   )            
+        <>
+          <CartCard item={item}/>
+        </>   
+      )            
     })}
 
   </div>

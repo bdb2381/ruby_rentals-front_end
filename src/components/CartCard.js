@@ -2,7 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 const CartCard = (props) => {
-const {model, 
+
+  const {model, 
   id,
   item_type,
   brand,
@@ -25,13 +26,17 @@ return(
     <div className="financial">$ ${day_rental_price} </div>
     <div className="financial">{numberOfItemsReserved}</div>
     <div className="financial">${total_rental_amount} </div>
+    {/* <div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div> */}
 
-    {/* {props.cartStatus != "PURCHASED" ?  */}
-    <div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div> 
-    {/* : */}
-    {/* <div></div> */}
+    {props.cartStatus == "ITEM_ADDED" ? (<div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div>)
+     : (<div></div> )
   
-    {/* } */}
+    }
+
+{/* {props.cartStatus == "ITEM_ADDED" && (<div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div>)
+} */}
+
+
 
 </>
   
