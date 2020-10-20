@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 const CartCard = (props) => {
 const {model, 
@@ -24,7 +25,13 @@ return(
     <div className="financial">$ ${day_rental_price} </div>
     <div className="financial">{numberOfItemsReserved}</div>
     <div className="financial">${total_rental_amount} </div>
-    <div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div>
+
+    {/* {props.cartStatus != "PURCHASED" ?  */}
+    <div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div> 
+    {/* : */}
+    {/* <div></div> */}
+  
+    {/* } */}
 
 </>
   
@@ -36,4 +43,14 @@ return(
 
 }
 
-export default CartCard
+
+const mapStateToProps = (state) => {
+  return {
+    cartItems: state.cart.cartItems, 
+    cartStatus: state.cart.cartStatus,
+    
+   }
+}
+
+
+export default connect(mapStateToProps)(CartCard)

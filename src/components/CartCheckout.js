@@ -42,7 +42,9 @@ class CartCheckout extends React.Component{
   }
 
  displayItemsInCart = () => {
-   if (this.props.cartStatus == "ITEM_ADDED" || this.props.cartStatus == "ITEM_REMOVED") {
+   if (this.props.cartStatus == "ITEM_ADDED" || this.props.cartStatus == "ITEM_REMOVED" && this.props.cartItems.length >= 1) {
+
+    
   return(
     <>
     <h1>Your Reservation</h1> 
@@ -77,13 +79,13 @@ class CartCheckout extends React.Component{
 }
 
 displayCartIsEmpty = () => {
-  if ( this.props.cartStatus == "CART_EMPTY" ){
+  if ( this.props.cartStatus == "CART_EMPTY" || this.props.cartStatus == "ITEM_REMOVED" && this.props.cartItems.length == 0){
     return (<div>The cart is  empty.</div>)
   } 
 }
 
 displayCartConfirmation = () => {
-  if (this.props.cartStatus == "PURCHASED"){
+  if (this.props.cartStatus == "c"){
   return(
     <>
       <h1>Order Confirmed</h1> 
