@@ -26,15 +26,14 @@ return(
     <div className="financial">$ ${day_rental_price} </div>
     <div className="financial">{numberOfItemsReserved}</div>
     <div className="financial">${total_rental_amount} </div>
-    {/* <div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div> */}
-
-    {props.cartStatus == "ITEM_ADDED" ? (<div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div>)
-     : (<div></div> )
-  
+    
+    {/* display remove item on if order is final or not */}
+    {props.cartStatus == "ITEM_ADDED" 
+      ? (<div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div>)
+      : (<div></div> )
     }
 
-{/* {props.cartStatus == "ITEM_ADDED" && (<div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div>)
-} */}
+
 
 
 

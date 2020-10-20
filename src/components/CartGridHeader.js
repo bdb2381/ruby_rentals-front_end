@@ -11,14 +11,14 @@ const CartGridHeader = (props) => {
       <div className="cartHeader">Each/Day</div>
       <div className="cartHeader">Quantity</div>
       <div className="cartHeader">Total</div>
-      {/* <div className="cartHeader">Remove Item</div> */}
-      {props.cartStatus == "ITEM_ADDED" ? (<div className="cartHeader">Remove Item</div>
-      ):(<div></div>) 
+    
+      {/* display remove item on if order is final or not */}
+      {props.cartStatus == "ITEM_ADDED" 
+        ? (<div className="cartHeader">Remove Item</div>)
+        : (<div></div>) 
      }
  
- {/* {props.cartStatus == "ITEM_ADDED" && (<div className="cartHeader">Remove Item</div>
-      )
-     } */}
+
 
 
 

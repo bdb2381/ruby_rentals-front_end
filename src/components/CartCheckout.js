@@ -80,7 +80,7 @@ class CartCheckout extends React.Component{
 
 displayCartIsEmpty = () => {
   if ( this.props.cartStatus == "CART_EMPTY" || this.props.cartStatus == "ITEM_REMOVED" && this.props.cartItems.length == 0){
-    return (<div>The cart is  empty.</div>)
+    return (<div>The cart is empty.</div>)
   } 
 }
 
@@ -88,7 +88,7 @@ displayCartConfirmation = () => {
   if (this.props.cartStatus == "PURCHASED"){
   return(
     <>
-      <h1>Order Confirmed</h1> 
+      <h1>Order Confirmed #112{this.props.cartGrandTotal}1 </h1> 
       <div className="cart-grid">
       <CartGridHeader/>
       {this.props.purchasedItems.map((item, i) => {
