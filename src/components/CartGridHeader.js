@@ -10,6 +10,7 @@ const CartGridHeader = () => {
       <div className="cartHeader">Each/Day</div>
       <div className="cartHeader">Quantity</div>
       <div className="cartHeader">Total</div>
+      <div className="cartHeader">Remove Item</div>
     </>
   )
 

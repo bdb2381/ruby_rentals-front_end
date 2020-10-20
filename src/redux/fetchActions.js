@@ -60,7 +60,7 @@ export const reservationPostFetch = (reservation) => {
 console.log(reservation)
 console.log("in reservation post fetch")
   // return dispatch => {
-    // dispatch(postReservationBegin())
+  //   dispatch(postReservationBegin())
     return fetch(`${API_ROOT}/reservations/`, {
     method: "POST",
     headers: headers,

@@ -28,3 +28,8 @@ export const logoutUser = () => ({
   type: 'LOGOUT_USER'
 })
 
+export const removeItemFromCart = (updatedItems) => ({
+  type:     "REMOVE_SINGLE_ITEM_FROM_CART",
+  payload: updatedItems
+
+})

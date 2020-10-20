@@ -262,7 +262,7 @@ a{
 
 .cart-grid {
   display: inline-grid;
-  grid-template-columns: auto auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto auto;
   letter-spacing: -.01rem;
   padding: 5px; 
   margin: 10px;
@@ -294,6 +294,14 @@ a{
   /* width: 10rem; */
   font-size: 1.2em;
   margin: 1em;
+}
+
+.remove {
+  /* width: 10rem; */
+  font-size: .5em;
+  margin: 1em;
+  align-items: center;
+  text-align: center;
 }
 
 

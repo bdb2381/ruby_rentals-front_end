@@ -27,7 +27,7 @@ export default function cartReducer(state = initialState, action){
 
       case "PURCHASE_SUCCESS":
         return {
-          purchasedItems: action.payload,
+          purchasedItems: state.cartItems,// action.payload,
           cartItems: [],  // reset cart upon success
           cartStatus: "CART_EMPTY",
           cartGrandTotal: 0,
@@ -54,12 +54,21 @@ console.log(action.payload)
 
       case "RESERVATION_BEGIN_FETCH_POST":
 console.log(action.payload)
-
         return {
           ...state,
           reservationPostFetchStart: true
         }
       
+      case "REMOVE_SINGLE_ITEM_FROM_CART":
+  console.log(action.payload)
+        return {
+          ...state, 
+          cartItems: action.payload,
+          cartStatus: "ITEM_REMOVED",
+        }
+
+
+
   default:
     // just incase, return state
     return state

@@ -12,7 +12,8 @@ return(
   <div>
   
     <CartCheckout/>
-              
+
+    {/* <CartConfirmation/>           */}
 
   </div>
 

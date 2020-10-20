@@ -1,9 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {receiptPostFetch, postCartSuccess} from '../redux/fetchActions.js'
-import {reservationPostFetch} from '../redux/fetchActions'
+import {receiptPostFetch, postCartSuccess, reservationPostFetch} from '../redux/fetchActions.js'
+import {removeItemFromCart} from '../redux/actions'
 import CartCard from './CartCard'
 import CartGridHeader from './CartGridHeader'
+
+
+
 
 class CartCheckout extends React.Component{
     
@@ -20,12 +23,23 @@ class CartCheckout extends React.Component{
     // rental_status: selectedInventory.rental_status,
     // requested_quanitity: numberOfItemsReserved
 
-
     this.props.postCartSuccess()
 
-console.log("end of handleClick")
-
   } // end handleClick 
+
+  handleClickRemoveItem = (item) => {
+    console.log("in click remove", item)
+    
+   const updatedItems = this.props.cartItems.filter(cart => {return cart !== item  })
+
+    console.log(updatedItems)
+
+    this.props.removeItemFromCart(updatedItems)
+
+  }
+
+
+
 
 
 render(){
@@ -35,16 +49,20 @@ render(){
     <div className="cart-container">
     <h1>Your Reservation</h1> 
       
-    { cartStatus === "ITEM_ADDED" ? 
-<>
+    { cartStatus === "ITEM_ADDED" || "ITEM_REMOVED" ? 
+  <>
     <div className="cart-grid">
         <CartGridHeader/>
 
     
         {this.props.cartItems.map((item, i) => {
+          
           return( 
             <>
-              <CartCard item={item}/>
+              <CartCard 
+              key={i}
+              item={item} 
+              handleClickRemoveItem={this.handleClickRemoveItem}  />
             </>
         )})}
     </div> 
@@ -58,7 +76,7 @@ render(){
             id="checkout" 
             />
       </div>
-      </>
+  </>
       :
       <div>The cart is empty.</div>
       }
@@ -89,14 +107,22 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    
+    removeItemFromCart: (updatedItems) => {
+      dispatch(removeItemFromCart(updatedItems))
+    },   
+    
     postCartSuccess:  (reservation) => {
-      dispatch(postCartSuccess(reservation))} ,
+      dispatch(postCartSuccess(reservation))
+    },
 
     reservationPostFetch:  () => {
-      dispatch(reservationPostFetch())} ,
+      dispatch(reservationPostFetch())
+    },
 
-      receiptPostFetch:  (cartGrandTotal, cartItems, currentUser, reservationPostFetch) => {
-        dispatch(receiptPostFetch(cartGrandTotal,cartItems, currentUser, reservationPostFetch ))}
+    receiptPostFetch:  (cartGrandTotal, cartItems, currentUser, reservationPostFetch) => {
+      dispatch(receiptPostFetch(cartGrandTotal,cartItems, currentUser, reservationPostFetch ))
+    }
 
   }
 }
