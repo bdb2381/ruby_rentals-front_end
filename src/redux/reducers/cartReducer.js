@@ -2,7 +2,7 @@
 
 const initialState = {
   cartItems: [],
-  purchasedItems:[],
+  purchasedItems: [],
   cartStatus: "CART_EMPTY",
   cartGrandTotal: 0,
   receiptID: null,
@@ -27,10 +27,10 @@ export default function cartReducer(state = initialState, action){
 
       case "PURCHASE_SUCCESS":
         return {
-          purchasedItems: state.cartItems,// action.payload,
+          purchasedItems: state.cartItems,
           cartItems: [],  // reset cart upon success
-          cartStatus: "CART_EMPTY",
-          cartGrandTotal: 0,
+          cartStatus: "PURCHASED",
+          cartGrandTotal: state.cartGrandTotal,
           // receiptID: null,   can't reset otherwise bug due to loop in receipt post fetch
           receiptPostFetchStart: false,
           reservationPostFetchStart: false

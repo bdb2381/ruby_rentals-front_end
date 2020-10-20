@@ -16,14 +16,18 @@ class CartCheckout extends React.Component{
 
     const {cartGrandTotal, cartItems, currentUser} = this.props
     
-    this.props.receiptPostFetch(cartGrandTotal, cartItems, currentUser, reservationPostFetch)
-  
+    
+    this.props.receiptPostFetch(cartGrandTotal, cartItems, currentUser, reservationPostFetch) // post receipt and reservation information
+    
+    
+    this.props.postCartSuccess() // reset state for empty cart & move cart items into purchasedItems state
+
 // below required to create validation
     // total_rental_amount: total,
     // rental_status: selectedInventory.rental_status,
     // requested_quanitity: numberOfItemsReserved
 
-    this.props.postCartSuccess()
+  
 
   } // end handleClick 
 
@@ -37,48 +41,81 @@ class CartCheckout extends React.Component{
 
   }
 
+ displayItemsInCart = () => {
+   if (this.props.cartStatus == "ITEM_ADDED" || this.props.cartStatus == "ITEM_REMOVED") {
+  return(
+    <>
+    <h1>Your Reservation</h1> 
+      {/* if cart has 1 item or more, display cart items   */}
+    
+      <div className="cart-grid">
+           <CartGridHeader/> 
 
+          {this.props.cartItems.map((item, i) => {
+            return( 
+              <>
+                <CartCard 
+                key={i}
+                item={item} 
+                handleClickRemoveItem={this.handleClickRemoveItem}  />
+              </>
+          )})}
+      </div> 
+      <div> Grand Total: ${this.props.cartGrandTotal  } </div>
+      <div className="checkoutButton" >
+            <input
+              onClick={this.handleClick}
+              type="submit" 
+              name="Complete Reservation" 
+              value="Complete Reservation" 
+              id="checkout" 
+              />
+        </div>
+  </>
+    )
+  }
+}
+
+displayCartIsEmpty = () => {
+  if ( this.props.cartStatus == "CART_EMPTY" ){
+    return (<div>The cart is  empty.</div>)
+  } 
+}
+
+displayCartConfirmation = () => {
+  if (this.props.cartStatus == "PURCHASED"){
+  return(
+    <>
+      <h1>Order Confirmed</h1> 
+      <div className="cart-grid">
+      <CartGridHeader/>
+      {this.props.purchasedItems.map((item, i) => {
+        
+              return( 
+                <>
+                  <CartCard 
+                  key={i}
+                  item={item} 
+                  />
+                </>
+            )})}
+        </div> 
+        <div> Grand Total: ${this.props.cartGrandTotal  } </div>
+    </>
+    )
+  }
+}
 
 
 
 render(){
-  let cartStatus = this.props.cartStatus
   
   return(
     <div className="cart-container">
-    <h1>Your Reservation</h1> 
-      
-    { cartStatus === "ITEM_ADDED" || "ITEM_REMOVED" && this.props.cartItems.length >= 1 ? 
-  <>
-    <div className="cart-grid">
-        <CartGridHeader/>
-
-    
-        {this.props.cartItems.map((item, i) => {
-          
-          return( 
-            <>
-              <CartCard 
-              key={i}
-              item={item} 
-              handleClickRemoveItem={this.handleClickRemoveItem}  />
-            </>
-        )})}
-    </div> 
-    <div> Grand Total: ${this.props.cartGrandTotal  } </div>
-    <div className="checkoutButton" >
-          <input
-            onClick={this.handleClick}
-            type="submit" 
-            name="Complete Reservation" 
-            value="Complete Reservation" 
-            id="checkout" 
-            />
-      </div>
-  </>
-      :
-      <div>The cart is empty.</div>
-      }
+      {/* run each func and check internal display logic to display  */}
+      {this.displayItemsInCart()}  
+      {this.displayCartIsEmpty()}
+      {this.displayCartConfirmation()}    
   
     </div>
   )
@@ -93,7 +130,8 @@ const mapStateToProps = (state) => {
     currentUser: state.login.currentUser,
     cartGrandTotal: state.cart.cartGrandTotal,
     receiptID: state.cart.receiptID,
-    receiptPostFetchStart: state.cart.receiptPostFetchStart
+    receiptPostFetchStart: state.cart.receiptPostFetchStart,
+    purchasedItems: state.cart.purchasedItems
    }
 }
 

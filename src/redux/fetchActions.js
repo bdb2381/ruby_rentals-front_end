@@ -59,8 +59,8 @@ export const postReservationBegin = () => (
 export const reservationPostFetch = (reservation) => {
 console.log(reservation)
 console.log("in reservation post fetch")
-  // return dispatch => {
-  //   dispatch(postReservationBegin())
+  return dispatch => {
+    dispatch(postReservationBegin())
     return fetch(`${API_ROOT}/reservations/`, {
     method: "POST",
     headers: headers,
@@ -79,7 +79,7 @@ console.log("in reservation post fetch")
       }
     })  
   } // end first return 
-// } // end receiptPostFetch
+} // end receiptPostFetch
 
 
 
@@ -126,7 +126,7 @@ console.log(data.receipt.id)
         }
 
         // persist reservationDetails to database
-          reservationPostFetch(reservationDetails)
+          dispatch(reservationPostFetch(reservationDetails))
 
       } // end for loop 
 
