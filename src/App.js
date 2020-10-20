@@ -31,7 +31,7 @@ class App extends React.Component {
             }}
             />
 
-             {/* contains routing logic for items */}
+             {/* ItemsContainer contains routing logic for items */}
             <ItemsContainer/>   
 
            

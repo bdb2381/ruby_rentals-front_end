@@ -217,7 +217,7 @@ a{
  input[type=button], input[type=submit], input[type=reset]{
   background-color: #e6c611;
     border: none;
-    font-size: 1.5em;
+    font-size: 3vh;
     color: black;
     padding: 11px 25px;
     text-decoration: none;

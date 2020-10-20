@@ -10,8 +10,8 @@ import CartGridHeader from './CartGridHeader'
 
 class CartCheckout extends React.Component{
     
+  // Run two nested fetch requests. 
   handleClick = ()=>{
-    // run two nested fetch requests. 
     // 1) Post receipt which then calls 2) post reservation data with receipt id
 
     const {cartGrandTotal, cartItems, currentUser} = this.props
@@ -27,14 +27,13 @@ class CartCheckout extends React.Component{
 
   } // end handleClick 
 
+
+  // remove item from cart
   handleClickRemoveItem = (item) => {
-    console.log("in click remove", item)
     
    const updatedItems = this.props.cartItems.filter(cart => {return cart !== item  })
 
-    console.log(updatedItems)
-
-    this.props.removeItemFromCart(updatedItems)
+   this.props.removeItemFromCart(updatedItems)
 
   }
 
@@ -49,7 +48,7 @@ render(){
     <div className="cart-container">
     <h1>Your Reservation</h1> 
       
-    { cartStatus === "ITEM_ADDED" || "ITEM_REMOVED" ? 
+    { cartStatus === "ITEM_ADDED" || "ITEM_REMOVED" && this.props.cartItems.length >= 1 ? 
   <>
     <div className="cart-grid">
         <CartGridHeader/>
