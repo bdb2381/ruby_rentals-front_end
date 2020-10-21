@@ -78,7 +78,8 @@ class ReservationSelector extends React.Component {
   render(){
     return(
     <div className="reservation-container">
-    
+    {!localStorage.token ? ( "Login to reserve equipment") 
+    :(
     <form onSubmit={this.handleSubmit}>
       <div className="datePicker"> 
         Pickup Date
@@ -111,7 +112,9 @@ class ReservationSelector extends React.Component {
         <input type="submit" name="submit" value="Add To Cart" id="submit" />
       </div>
     </form>
+    )}
     </div> // end wrapper div 
+    
     ) // end return
   } // end ReservationSelector
 }
