@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
+
 import {logoutUser} from '../redux/actions'
 
 class Navbar extends React.Component {
- 
+    
+  
     onLogoutClick (){
     
         // Remove the token and user data from localStorage
@@ -13,24 +15,20 @@ class Navbar extends React.Component {
         // Remove the user object from the Redux store
         this.props.logoutUser()
 
-  
         console.log("log out from NavBar")
-     
-
     }
 
-   
     render(){
-        
+
     return(
-        <nav className="navbar">
-            
+        <nav className="navbar-header">
+            <div className="nav">
                 <div className="brand-wordmark">
                     <Link to="/" >
                         Ruby Rentals
                     </Link>
                 </div>
-                
+            
                 <div className="navbar__link">
                     <Link to="/"
                     >
@@ -76,7 +74,7 @@ class Navbar extends React.Component {
                     )}
                      
                 
-          
+            </div>  
         </nav>  
     )}
 }
