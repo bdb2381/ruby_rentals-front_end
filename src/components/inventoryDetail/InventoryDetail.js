@@ -17,7 +17,8 @@ const InventoryDetail = (props) => {
   // props.dispatch(setSingleItem(props))
 
   return(
-    <div> 
+    <div className="item-container"> 
+    
       <div className="item" id={id}>
         <div className="itemName">
           {brand}  {model} 
@@ -39,6 +40,7 @@ const InventoryDetail = (props) => {
       <div className="reservation-container">
         <ReservationContainer />
       </div>
+
     </div>  // end wrapper div
     ) // end return
 } // end InventoryDetail

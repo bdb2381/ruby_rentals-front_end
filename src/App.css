@@ -16,7 +16,7 @@ a{
 .home-container{
   position: relative;
   background-repeat: no-repeat;
-  /* background-size: 100% ; */
+  margin: 0 0 2%;
   padding: 0rem;
   height: 30em;
   background-image: url("https://images.unsplash.com/photo-1504280390367-361c6d9f38f4");
@@ -92,7 +92,6 @@ a{
     grid-row-gap: 10px;
     grid-template-areas: 
     "brand-wordmark brand-wordmark  brand-wordmark brand-wordmark brand-wordmark ";
-
   }
   .navbar__link {
     margin: 0.5em;
@@ -102,6 +101,7 @@ a{
     letter-spacing: .1em;
     border-bottom: 3px solid transparent;
   }
+
   .brand-wordmark{
     grid-area: brand-wordmark;
     font-size: 3em;
@@ -109,10 +109,10 @@ a{
     letter-spacing: .12em;
     margin: auto;
     justify-items: left;
-    align-items: left;
-  
-  
+    align-items: left
   }
+
+
 }
 
 
@@ -233,23 +233,33 @@ a{
 
 /*******************/
 /* INDIVIDUAL ITEM DETAILS/INVENTORY COMPONENT*/
+
+.item-container{
+  display: grid;
+  /* grid-template-columns: 1.3fr 1fr; */
+  display: grid;
+  align-items: flex-start;  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  grid-gap: 1rem;
+
+}
+
 .item {
-  padding: 8px;
-  width: 40rem;
+  padding: 2px;
+  width: auto;
   display: inline-grid;
 }
 
 
 .item .itemName{
-  font-size: 35px;
+  font-size: 2.5em;
   text-align: center;
-  padding: 15px;
-  margin-top: 2rem;
+  padding: 2%;
+  margin-top: 1rem;
   font-weight: bolder;
 }
 
 .item .itemPrice {
-  font-size: 25px;
+  font-size: 1.5em;
 }
 
 .item .itemPhoto{
@@ -263,9 +273,9 @@ a{
 
 .item .itemDescription{
   position: relative;
-  font-size: 24px;
-  padding: 6px;
-  /* display: block; */
+  font-size: 1.5em;
+  padding: 3%;
+  text-align: left;
 }
 
 
@@ -333,7 +343,6 @@ a{
 .reservation-container{
   margin: 1em 1em;
   display: inline-grid;
-  /* border: solid; */
 }
 
 .datePicker{

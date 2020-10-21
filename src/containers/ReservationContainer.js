@@ -14,8 +14,6 @@ const ReservationContainer = () => {
       <h1>Reserve Your Gear </h1>
 
         <ReservationSelector/>
-        {/* <CartCheckout/> */}
-
 
       </div> // end container div
     ) // end return 
