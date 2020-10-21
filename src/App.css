@@ -238,7 +238,7 @@ a{
   display: grid;
   /* grid-template-columns: 1.3fr 1fr; */
   display: grid;
-  align-items: flex-start;  grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  align-items: flex-start;  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   grid-gap: 1rem;
 
 }
@@ -364,7 +364,7 @@ a{
  input[type=button], input[type=submit], input[type=reset]{
   background-color: #e6c611;
     border: none;
-    font-size: 1.8vw;
+    font-size: 1.8vh;
     color: black;
     padding: 2% 2%;
     text-decoration: none;
@@ -377,7 +377,7 @@ a{
 .loginButton {
   background-color: #e6c611;
   border: none;
-  font-size: 1.5em;
+  font-size: 1.8vh;
   color: black;
   padding: 0.4em;
   text-decoration: none;
@@ -393,7 +393,7 @@ a{
 .signupButton {
   background-color: #e6c611;
   border: none;
-  font-size: 1.5em;
+  font-size: 1.8vh;
   color: black;
   padding: 0.4em;
   text-decoration: none;
