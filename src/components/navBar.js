@@ -25,51 +25,57 @@ class Navbar extends React.Component {
     return(
         <nav className="navbar">
             
-                <div>
-                    <Link to="/" className="brand-wordmark">
+                <div className="brand-wordmark">
+                    <Link to="/" >
                         Ruby Rentals
                     </Link>
                 </div>
-
-                <div >
+                
+                <div className="navbar__link">
                     <Link to="/"
-                    className="navbar__link">
+                    >
                         Home
                     </Link>
-                    
-                    <Link to="/gear" className="navbar__link">
+                </div> 
+                <div className="navbar__link">   
+                    <Link to="/gear" >
                         Gear
                     </Link> 
-                    
+                </div>
                     {!localStorage.token || !this.props.currentUser ? (
-                    <div>
+                    <> 
+                    <div className="navbar__link">
                         <Link to="/signup"
-                        className="navbar__link">
+                        >
                             Create Account
                         </Link>
-
+                    </div> 
+                    <div className="navbar__link">
                         <Link to="/login"
-                        className="navbar__link">
+                        >
                             Log In
                         </Link> 
                     </div>
+                    </>
                     ) : (
-                    <div>
-                        <Link to="/cart"
-                        className="navbar__link">
-                            Cart
-                        </Link>         
-                        
-                        <Link to="/" 
-                        className="navbar__link"
-                        onClick={() => this.onLogoutClick()} >
-                            Logout 
-                        </Link>
-
-                    </div> 
+                    <>
+                        <div className="navbar__link">
+                            <Link to="/cart"
+                           >
+                                Cart
+                            </Link>         
+                        </div>
+                        <div  className="navbar__link">
+                            <Link to="/" 
+                            
+                            onClick={() => this.onLogoutClick()} >
+                                Logout 
+                            </Link>
+                        </div>   
+                    </> 
                     )}
                      
-                </div>
+                
           
         </nav>  
     )}

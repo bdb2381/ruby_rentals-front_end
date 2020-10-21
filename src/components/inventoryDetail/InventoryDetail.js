@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {setSingleItem} from '../../redux/actions'
-
 import ReservationContainer from '../../containers/ReservationContainer.js'
 
 
@@ -11,23 +10,15 @@ const InventoryDetail = (props) => {
   
   
   ////////////////
-  // Render the details for a single peice of inventory/equipment
-  //   item:
-// amount_available: 15
-// gear_photo_url: "https://www.nemoequipment.com/wp-content/uploads/szegowzpck69xqeeiayp-1024x866.jpg"
-// id: 18
-// inventory: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-// model_year: 2020
-// size: "2 Person"
-const altImageTag = `${brand} ${model} ${size} photo`
+  // Render the details for a single piece of inventory/equipment
+  const altImageTag = `${brand} ${model} ${size} photo`
 
-props.setSingleItem(props)
-// props.dispatch(setSingleItem(props))
+  props.setSingleItem(props)
+  // props.dispatch(setSingleItem(props))
 
-return(
-  <div> 
-        <div className="item" id={id}>
-
+  return(
+    <div> 
+      <div className="item" id={id}>
         <div className="itemName">
           {brand}  {model} 
         </div>
@@ -48,11 +39,9 @@ return(
       <div className="reservation-container">
         <ReservationContainer />
       </div>
-    
-     </div>  // end wrapper div
+    </div>  // end wrapper div
     ) // end return
 } // end InventoryDetail
-
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -60,7 +49,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-
 export default connect(null, mapDispatchToProps)(InventoryDetail)
-
-// export default  connect()(InventoryDetail)  

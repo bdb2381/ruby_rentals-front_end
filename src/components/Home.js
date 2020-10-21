@@ -13,7 +13,7 @@ class Home extends Component{
                 
 
                 <div className="promo">
-                    <h1>It is Fall.</h1>
+                    <h1>Fall Is Here</h1>
                     <h2>Time To Camp Under The Stars</h2>
 
                 <Link to="/gear/">

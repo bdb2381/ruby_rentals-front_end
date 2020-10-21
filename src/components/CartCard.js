@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 const CartCard = (props) => {
 
   const {model, 
-  id,
   item_type,
   brand,
   startDate,
@@ -28,7 +27,7 @@ return(
     <div className="financial">${total_rental_amount} </div>
     
     {/* display remove item on if order is final or not */}
-    {props.cartStatus == "ITEM_ADDED" 
+    {props.cartStatus === "ITEM_ADDED" || "ITEM_REMOVED" 
       ? (<div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div>)
       : (<div></div> )
     }

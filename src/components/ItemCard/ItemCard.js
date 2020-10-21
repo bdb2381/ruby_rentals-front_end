@@ -1,14 +1,15 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-
 ////////////////
 // Render a single item/gear card
+///////////////
+
 
 const ItemCard = (props) => {
- const {id, brand, model, size, gear_photo_url, item_type, day_rental_price, } = props.item 
- 
-const altImageTag = `${brand} ${model} ${size} ${item_type} photo`
+  const {id, brand, model, size, gear_photo_url, item_type, day_rental_price, } = props.item 
+  
+  const altImageTag = `${brand} ${model} ${size} ${item_type} photo`
 
   return (
     <div className="card-container">
@@ -34,11 +35,8 @@ const altImageTag = `${brand} ${model} ${size} ${item_type} photo`
         </div>
         </div>
       </Link>
-    
-
-  </div> // closing return div
+    </div> // closing return div
   ) // end return 
-
 } // end ItemCard
 
 export default ItemCard
