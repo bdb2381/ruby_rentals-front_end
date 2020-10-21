@@ -34,79 +34,88 @@ handleSubmit = (event) => {
 
 render(){
   return(
-
+<div className="signup-container">
     <form 
       onSubmit={this.handleSubmit} 
-      
-     >
-
+    >
+      <div className="sign-form-left">
       <input
+        type="text"
         name="email"
-        placeholder="What is your email?"
+        placeholder="Email as login"
         value={this.state.email}
         onChange={this.handleSignupChange}
         />
       <input
+      type="password"
         name="password"
         placeholder="Password"
         value={this.state.password}
         onChange={this.handleSignupChange}
         />
-
         <input 
+        type="password"
         name="password_confirmation"
         placeholder="Confirm Password"
         value={this.state.password_confirmation}
         onChange={this.handleSignupChange}
         />
-
       <input
+      type="text"
         name="first_name"
         placeholder="First Name"
         value={this.state.first_name}
         onChange={this.handleSignupChange}
         />
       <input
+      type="text"
         name="last_name"
         placeholder="Last Name"
         value={this.state.last_name}
         onChange={this.handleSignupChange}
         />
+      </div>
+      <div className="sign-form-right">
       <input
+      type="text"
         name="street_address"
         placeholder="Street Address"
         value={this.state.street_address }
         onChange={this.handleSignupChange}
         />
       <input 
+type="text"
         name="city"
         placeholder="City "
         value={this.state.city }
         onChange={this.handleSignupChange}
         />
       <input  // this should become a prepopulate dropdown
+      type="text"
         name="state"
         placeholder="State"
         value={this.state.state }
         onChange={this.handleSignupChange}
         />
       <input  // this should become a prepopulate dropdown
+      type="text"
         name="zip_code"
         placeholder="Zipcode "
         value={this.state.state.zip_code }
         onChange={this.handleSignupChange}
         />
       <input  // this should become a prepopulate dropdown
+      type="number"
         name="phone"
         placeholder="Phone Number "
         value={this.state.phone }
         onChange={this.handleSignupChange}
         />
-
       {/* <input type="submit" placeholder="Create Your Account"/> */}
       <button className="signupButton">Create Your Account</button>
+      </div>
     </form>
-
+</div> // end container
 
     ) // end return
   } // end render

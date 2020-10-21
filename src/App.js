@@ -13,6 +13,7 @@ import CartContainer from './containers/CartContainer'
 import SignupContainer from './containers/SignupContainer'
 import ItemsContainer from './containers/ItemsContainer.js'
 import {getProfileFetch} from './redux/fetchActions'
+import Footer from './components/Footer'
 
 class App extends React.Component {
   
@@ -68,6 +69,8 @@ class App extends React.Component {
           path="/"
           component={HomeContainer}
           />
+
+<Footer/>
 
           </Router>
         </div>

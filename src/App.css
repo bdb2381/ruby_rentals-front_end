@@ -80,10 +80,75 @@ position: absolute;
   transition: border-bottom .5s ease-in-out;
 }
 
+/*******************/
+
+/*******************/
+/* SIGNUP FORM*/
+
+.sign-form-left {
+  flex: 40%;
+  float: left;
+  margin: 0 auto;
+  width: 40%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  /* grid-area: left-col; */
+}
+.sign-form-left input[type="text"], 
+.sign-form-left input[type="password"],
+.sign-form-left input[type="number"] {
+  margin: 0 auto;
+  width: 80%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.sign-form-right
+{ flex: 40%;
+  float: right;
+  margin: 0 auto;
+  width: 50%;
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+
+.sign-form-right input[type="text"],
+.sign-form-right input[type="number"]
+{ margin: 0 auto;
+  width: 80%;
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+
+.signup-container{
+  padding: 3%;
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  /* grid-template-columns: 150px 150px;
+  grid-template-rows: auto;
+  grid-gap: 16px;
+  grid-template-areas:
+  'left-col right-col'
+  'signupButton signupButton'; */
+}
+
+
+
+
+
 
 
 /*******************/
-
 
 
 /*******************/
@@ -228,13 +293,13 @@ position: absolute;
   border: none;
   font-size: 1.5em;
   color: black;
-  padding: 16px 32px;
+  padding: 0.4em;
   text-decoration: none;
   margin: 2px 2px;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
   border-radius: 10px;
-
+  margin-top: .5em;
 }
 
 .checkoutButton {
