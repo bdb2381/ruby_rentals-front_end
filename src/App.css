@@ -419,17 +419,7 @@ a{
 .cart-container {
   background-color: #c1c0be5f;
   padding: 2.2em;
-
 }
-
-
-/* .cart-grid {
-  display: inline-grid;
-  grid-template-columns: auto auto auto auto auto auto auto;
-  letter-spacing: -.01rem;
-  padding: 5px; 
-  margin: 10px;
-} */
 
 .cart-grid {
   display: grid;
@@ -437,12 +427,7 @@ a{
   grid-template-rows: repeat(2, auto);
   grid-gap: .5rem;
   justify-content: center;
-
 }
-
-
-
-
 
 .cartHeader{
   font-size: .8em;
@@ -453,38 +438,25 @@ a{
 
 
 .cartDesc {
-  /* width: 10rem; */
-  /* font-size: 1.4em; */
   margin: .6em;
-  /* align-items: left;
-  text-align: left; */
 } 
 
 .financial {
-  /* font-size: 1.2em; */
-  /* padding: .3em */
   margin: .6em;
 }
 
 .dates {
-  /* width: 10rem; */
-  /* font-size: 1.2em; */
   margin: .6em;
 }
 
 .remove {
-  /* width: 10rem; */
   font-size: .5em;
   margin: .6em;
-  /* align-items: center;
-  text-align: center; */
+
 }
 
 .empty{
   font-size: 1.5em;
-  /* margin: 7em; */
-  /* align-items: right;
-  text-align: center; */
 }
 
 .grandTotal{

@@ -14,6 +14,7 @@ const CartCard = (props) => {
 } = props.item
 
 
+
 return(
 <>
     <div className="cartDesc">
@@ -22,12 +23,12 @@ return(
     </div>
     <div className="dates">{startDate}</div>
     <div className="dates">{returnDate}</div>
-    <div className="financial">$ ${day_rental_price} </div>
+    <div className="financial">${day_rental_price} </div>
     <div className="financial">{numberOfItemsReserved}</div>
     <div className="financial">${total_rental_amount} </div>
     
-    {/* display remove item on if order is final or not */}
-    {props.cartStatus === "ITEM_ADDED" || "ITEM_REMOVED" 
+    {/* display "Remove" option if order is final and render blank div for css */}
+    {props.cartStatus != "PURCHASED"
       ? (<div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div>)
       : (<div></div> )
     }

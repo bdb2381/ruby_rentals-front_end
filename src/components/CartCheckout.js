@@ -104,7 +104,7 @@ displayCartConfirmation = () => {
                 </>
             )})}
         </div> 
-        <div> Grand Total: ${this.props.cartGrandTotal  } </div>
+        <div className="grandTotal"> Grand Total: ${this.props.cartGrandTotal  } </div>
     </>
     )
   }
