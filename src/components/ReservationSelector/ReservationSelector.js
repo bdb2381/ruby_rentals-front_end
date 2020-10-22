@@ -58,15 +58,15 @@ class ReservationSelector extends React.Component {
     );
   }
 
-  // create dropdown options based on inventory amount 
+  // create dropdown options based on inventory amount
+  // REFACTOR: count based on availability 
   inventoryAvailable (){
     const {inventory} = this.props.item 
-    const {item} = this.props
       
     let numbers = inventory.map((item, i) => {
         return(
           <option 
-          key={i} 
+          key={i++} 
           value={i}
           > {i} </option>
         )
@@ -76,39 +76,43 @@ class ReservationSelector extends React.Component {
   }
   
   render(){
+    
     return(
     <div className="reservation-container">
-    {!localStorage.token ? ( "Login to reserve equipment") 
-    :(
-    <form onSubmit={this.handleSubmit}>
-      <div className="datePicker"> 
-        Pickup Date
-        <input 
-          onChange={(event) => this.handleChange(event)}
-          type="date" 
-          name="startDate" 
-          value={this.props.startDate}/>
-      </div>
+      {!localStorage.token ? ( "Login to reserve equipment") 
+     :(
+      <form onSubmit={this.handleSubmit}>
+        <div className="datePicker"> 
+          Pickup Date
+          <input 
+            onChange={(event) => this.handleChange(event)}
+            type="date" 
+            name="startDate" 
+            value={this.props.startDate}/>
+        </div>
 
-      <div className="datePicker">
-        Return Date
-        <input 
-          onChange={(event) => this.handleChange(event)}
-          type="date" 
-          name="returnDate" 
-          value={this.props.returnDate}/>
-      </div>
+        <div className="datePicker">
+          Return Date
+          <input 
+            onChange={(event) => this.handleChange(event)}
+            type="date" 
+            name="returnDate" 
+            value={this.props.returnDate}/>
+        </div>
 
-      <div className="reservationDropdown">
-          <label>
-            How many {this.props.item.model}: 
+        <div className="reservationDropdown">
+            <label>
+              Pick how many {this.props.item.model}:  </label>
+            
             <select onChange={(event) => this.handleDropdownChange(event)}>
               {this.inventoryAvailable()}
             </select>
-          </label>
+            <p>
+              There are {this.props.item.inventory.length} available. 
+          </p>
       </div>
     
-      <div>
+      <div className="reservation-button">
         <input type="submit" name="submit" value="Add To Cart" id="submit" />
       </div>
     </form>

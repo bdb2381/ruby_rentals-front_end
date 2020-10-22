@@ -240,7 +240,7 @@ a{
   display: grid;
   align-items: flex-start;  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   grid-gap: 1rem;
-
+  margin: 0 10%;
 }
 
 .item {
@@ -286,12 +286,10 @@ a{
 .card-container{
   margin: 1rem 1rem;
   display: inline-grid;
-
 }
 
 .card {
-  cursor: pointer;
-  /* changes pointer for clickable objects */
+  cursor: pointer; /* changes pointer for clickable objects */
   text-decoration: none;
   text-align: center;
   border-radius: 10px;
@@ -310,15 +308,15 @@ a{
   padding: .8em 0 .8em 0 ;
   border-radius: 10px 10px 0 0;
 }
+
 .card .itemContent {
   /* background:#EDB668; */
   word-wrap: break-word;
   /* font-size: 3em; */
   padding: .5em;
   text-align: center;
-  
-
 }
+
 .card .brand {
   font-size: 1.7em;
   padding-bottom: .5em
@@ -355,11 +353,13 @@ a{
   margin: 1em ;
 }
 
+.reservation-button{
+  padding-top: 2em;
+}
 
 /*******************/
 /*******************/
 /* BUTTONS AND INPUT TYPES*/
-
 
  input[type=button], input[type=submit], input[type=reset]{
   background-color: #e6c611;
@@ -387,8 +387,6 @@ a{
   border-radius: 10px;
   margin-top: .5em;
 }
-
-
 
 .signupButton {
   background-color: #e6c611;
@@ -466,10 +464,10 @@ a{
 
 
 /*******************/
-/* CART and CHECKOUT */
+/* FOOTER CONTENT */
 
 .footer{
-margin-top: 3em;             
+margin-top: 15%;             
 }
 
 /*******************/
