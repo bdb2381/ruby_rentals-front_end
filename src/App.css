@@ -80,12 +80,32 @@ a{
   transition: border-bottom .5s ease-in-out;
 }
 
-/* .burger{
-  display:none;
+#notification {
+  /* background-color: #555; */
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+/* #notification:hover {
+  background: red;
 } */
 
-@media (max-width: 650px){
-  
+#notification #badge {
+  position: absolute;
+  top: 1px;
+  right: 8px;
+  padding: 0px 6px;
+  border-radius: 49%;
+  background-color: rgb(205, 135, 6);
+  color: white;
+  font-size: .75em;
+}
+
+@media (max-width: 650px){             
   .nav {
     grid-template-rows: repeat(2, auto);
     grid-template-columns: 1;

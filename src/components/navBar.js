@@ -57,11 +57,12 @@ class Navbar extends React.Component {
                     </>
                     ) : (
                     <>
-                        <div className="navbar__link">
+                        <div className="navbar__link" id="notification">
                             <Link to="/cart"
                            >
                                 Cart
-                            </Link>         
+                            </Link>  
+                            <span id="badge">{this.props.cartItems.length}</span>       
                         </div>
                         <div  className="navbar__link">
                             <Link to="/" 
@@ -81,7 +82,10 @@ class Navbar extends React.Component {
 
   
 const mapStateToProps = (state) => {
-    return {currentUser: state.login.currentUser }
+    return {
+        currentUser: state.login.currentUser,
+        cartItems: state.cart.cartItems
+    }
 }
 
 const mapDispatchToProps = dispatch => ({
