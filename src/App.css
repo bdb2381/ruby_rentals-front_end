@@ -24,6 +24,7 @@ a{
   background-position: center;
 }
 
+/* hero area */
 .promo { 
   letter-spacing: -.01rem;
   background: rgba(0, 0, 0, .24);
@@ -57,7 +58,7 @@ a{
   position: -webkit-sticky;  
   position: sticky;
   top: 0; 
-  /* background-color: transparent; */
+  background-color: black;
 }
 
 .nav{
