@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 const CartGridHeader = (props) => {
+// handle display of confirmation pages 
 
   return (
     <>
@@ -12,16 +13,11 @@ const CartGridHeader = (props) => {
       <div className="cartHeader">Quantity</div>
       <div className="cartHeader">Total</div>
     
-      {/* display remove item on if order is final or not */}
+      {/* display remove item on if order is final or not. Divs required for spacing */}
       {props.cartStatus != "PURCHASED" 
-        ? (<div className="cartHeader">Remove</div>)
+        ? (<div className="cartHeader"> </div>)
         : (<div></div>) 
      }
- 
-
-
-
-
     </>
   )
 

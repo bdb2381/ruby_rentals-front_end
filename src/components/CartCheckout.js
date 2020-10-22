@@ -6,7 +6,10 @@ import CartCard from './CartCard'
 import CartGridHeader from './CartGridHeader'
 
 
-
+//////////////
+// need refactored into mutliple components 
+// handle flow to add to cart, direct traffic for FETCH requests
+//////////////
 
 class CartCheckout extends React.Component{
     
@@ -28,7 +31,6 @@ class CartCheckout extends React.Component{
     // requested_quanitity: numberOfItemsReserved
 
   
-
   } // end handleClick 
 
 
@@ -41,10 +43,11 @@ class CartCheckout extends React.Component{
 
   }
 
- displayItemsInCart = () => {
-   if (this.props.cartStatus === "ITEM_ADDED" || this.props.cartStatus === "ITEM_REMOVED" && this.props.cartItems.length >= 1) {
 
-    
+ displayItemsInCart = () => {
+
+  if (this.props.cartStatus === "ITEM_ADDED" || this.props.cartStatus === "ITEM_REMOVED" && this.props.cartItems.length >= 1) {
+
   return(
     <>
     <h1>Your Reservation</h1> 
@@ -63,9 +66,11 @@ class CartCheckout extends React.Component{
               </>
           )})}
       </div> 
+
       <div className="grandTotal">
          Grand Total: ${this.props.cartGrandTotal  } 
       </div>
+
       <div className="checkoutButton" >
             <input
               onClick={this.handleClick}
@@ -80,13 +85,13 @@ class CartCheckout extends React.Component{
   }
 }
 
-displayCartIsEmpty = () => {
+displayCartIsEmpty = () => { // show message of empty cart on cart page
   if ( this.props.cartStatus === "CART_EMPTY" || this.props.cartStatus === "ITEM_REMOVED" && this.props.cartItems.length === 0){
     return (<div className="empty">The cart is empty.</div>)
   } 
 }
 
-displayCartConfirmation = () => {
+displayCartConfirmation = () => { // show order confirmed message
   if (this.props.cartStatus === "PURCHASED"){
   return(
     <>
@@ -110,10 +115,7 @@ displayCartConfirmation = () => {
   }
 }
 
-
-
-render(){
-  
+render(){  // class render method
   return(
     <div className="cart-container">
       {/* run each func and check internal display logic to display  */}
@@ -139,12 +141,6 @@ const mapStateToProps = (state) => {
    }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     receiptPostFetch: (grandTotal) => {
-//       dispatch(receiptPostFetch(grandTotal))}
-//   }
-// }
 
 const mapDispatchToProps = dispatch => {
   return {

@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 // Render a single item/gear card
 ///////////////
 
-
 const ItemCard = (props) => {
   const {id, brand, model, size, gear_photo_url, item_type, day_rental_price, } = props.item 
   

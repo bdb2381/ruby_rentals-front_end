@@ -4,6 +4,12 @@ import {connect} from 'react-redux'
 import CartCard from './CartCard'
 import CartGridHeader from './CartGridHeader'
 
+
+//////////////
+// handle flow to add to cart, direct traffic for FETCH requests
+//////////////
+
+
 const CartConfirmation = () => {
 
 return(

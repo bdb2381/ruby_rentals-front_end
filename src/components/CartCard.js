@@ -1,6 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+//////////////
+// display items for reservations confirmation screen & order
+//////////////
+
 const CartCard = (props) => {
 
   const {model, 
@@ -18,8 +22,8 @@ const CartCard = (props) => {
 return(
 <>
     <div className="cartDesc">
-    {model} {item_type}<br/> 
-    {brand}<br/>
+      {model} {item_type}<br/> 
+      {brand}<br/>
     </div>
     <div className="dates">{startDate}</div>
     <div className="dates">{returnDate}</div>
@@ -43,8 +47,7 @@ const mapStateToProps = (state) => {
   return {
     cartItems: state.cart.cartItems, 
     cartStatus: state.cart.cartStatus,
-    
-   }
+  }
 }
 
 

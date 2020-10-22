@@ -62,9 +62,9 @@ class Navbar extends React.Component {
                             <div className="navbar__link" id="cartNotification">
                                 <Link to="/cart">
                                     Cart
-                                </Link>  
-                                <span id="badge">{this.props.cartItems.length }</span>       
                                 
+                                <span id="badge">{this.props.cartItems.length }</span>       
+                                </Link>  
                             </div>
                         </>
                         : <div></div>

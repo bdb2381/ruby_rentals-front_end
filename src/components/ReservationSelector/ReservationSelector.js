@@ -2,6 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {addItemToCart} from '../../redux/actions'
 
+//////////////
+// handle logic (dates, amounts) for reservations 
+//////////////
 
 class ReservationSelector extends React.Component {
   state = {
@@ -11,8 +14,8 @@ class ReservationSelector extends React.Component {
     numberOfItemsReserved: 0
   }
 
-  // handle change for calender input
-  handleChange(event) {
+  
+  handleChange(event) { // handle change for calender input
       event.preventDefault()
       
       let name = event.target.name
@@ -26,8 +29,8 @@ class ReservationSelector extends React.Component {
       ))
     }
 
-// handle change for dropdown. Required since <select> doesn't have a name
-  handleDropdownChange(event) {
+  handleDropdownChange(event) { // handle for dropdown. Required since <select> doesn't have a name type
+
     event.preventDefault()
     
     let value = event.target.value
@@ -42,8 +45,8 @@ class ReservationSelector extends React.Component {
   }
   
 
-  // add startDate & endDate to the item Object
-  handleSubmit = (event)=>{
+  handleSubmit = (event)=>{   // add startDate & endDate to the item Object
+
     event.preventDefault()
     const {item} = this.props
 
@@ -76,7 +79,8 @@ class ReservationSelector extends React.Component {
   }
   
   render(){
-    
+    // nested ternary statements. Display based on login status and cart status
+
     return(
     <div className="reservation-container">
       {!localStorage.token ? ( "Login to reserve equipment") 
@@ -126,7 +130,7 @@ class ReservationSelector extends React.Component {
 const mapStateToProps = (state) => {
   return {
     item: state.currentItem.item, // item current on display
-    cartItems: state.cartItems, // items added to cart
+    cartItems: state.cartItems, // items added to/in cart
     startDate: state.startDate,
     endDate: state.endDate
   }

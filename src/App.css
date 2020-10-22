@@ -53,6 +53,12 @@ a{
   align-items: left;
 }
 
+.navbar-header{
+  position: -webkit-sticky;  
+  position: sticky;
+  top: 0; 
+  /* background-color: transparent; */
+}
 
 .nav{
   display: grid;
@@ -482,7 +488,7 @@ a{
 /* FOOTER CONTENT */
 
 .footer{
-margin-top: 15%;             
+margin: 15%;             
 }
 
 /*******************/
