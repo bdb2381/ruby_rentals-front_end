@@ -80,24 +80,19 @@ a{
   transition: border-bottom .5s ease-in-out;
 }
 
-#notification {
-  /* background-color: #555; */
+#cartNotification {
   color: white;
   text-decoration: none;
-  padding: 15px 26px;
   position: relative;
   display: inline-block;
   border-radius: 2px;
 }
 
-/* #notification:hover {
-  background: red;
-} */
 
-#notification #badge {
+#cartNotification #badge {
   position: absolute;
-  top: 1px;
-  right: 8px;
+  top: -8px;
+  right: -12px;
   padding: 0px 6px;
   border-radius: 49%;
   background-color: rgb(205, 135, 6);

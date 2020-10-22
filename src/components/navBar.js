@@ -57,13 +57,18 @@ class Navbar extends React.Component {
                     </>
                     ) : (
                     <>
-                        <div className="navbar__link" id="notification">
-                            <Link to="/cart"
-                           >
-                                Cart
-                            </Link>  
-                            <span id="badge">{this.props.cartItems.length}</span>       
-                        </div>
+                    { this.props.cartItems.length >=1 ?
+                        <>
+                            <div className="navbar__link" id="cartNotification">
+                                <Link to="/cart">
+                                    Cart
+                                </Link>  
+                                <span id="badge">{this.props.cartItems.length }</span>       
+                                
+                            </div>
+                        </>
+                        : <div></div>
+                    }
                         <div  className="navbar__link">
                             <Link to="/" 
                             
@@ -71,10 +76,12 @@ class Navbar extends React.Component {
                                 Logout 
                             </Link>
                         </div>   
+
+
+
                     </> 
                     )}
-                     
-                
+
             </div>  
         </nav>  
     )}
