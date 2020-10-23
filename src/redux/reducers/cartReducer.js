@@ -16,7 +16,6 @@ export default function cartReducer(state = initialState, action){
   switch(action.type){
   
       case "ADD_TO_CART":
-        console.log(action.payload)
         return {
           ...state,
           cartItems:[...state.cartItems, action.payload],
@@ -44,7 +43,6 @@ export default function cartReducer(state = initialState, action){
 
 
       case "RECEIPT_SUCCESS":
-console.log(action.payload)
         return {
           ...state,
           receiptID: action.payload,
@@ -59,7 +57,6 @@ console.log(action.payload)
         }
       
       case "REMOVE_SINGLE_ITEM_FROM_CART":
-  console.log(action.payload)
         return {
           ...state, 
           cartItems: action.payload,

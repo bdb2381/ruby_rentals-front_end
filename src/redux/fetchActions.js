@@ -47,8 +47,6 @@ export const postReceiptBegin = () => ({
 })
 
 export const postReservationBegin = () => (
-  
-  console.log("inside action creator of post rese"),
   {
   type: "RESERVATION_BEGIN_FETCH_POST"
 })
@@ -57,7 +55,6 @@ export const postReservationBegin = () => (
 // POST FETCH REQUESTS 
 
 export const reservationPostFetch = (reservation) => {
-console.log("in res post fetch", reservation)
   return dispatch => {
     dispatch(postReservationBegin())
     return fetch(`${API_ROOT}/reservations/`, {
@@ -71,7 +68,7 @@ console.log("in res post fetch", reservation)
         console.log(data.error)
       }
       else {
-        console.log("res post fetch finish" , data)
+        console.log("Reservation post fetch finished")
 
       }
     })  
@@ -100,8 +97,6 @@ export function receiptPostFetch(total, cartItems, currentUser, reservationPostF
           
         }
         else {
-
-console.log(data.receipt.id)
 
     for (let i = 0; i <= cartItems.length-1; i++){
           // REFACTOR selectedInventory to allow selecting several items if several requested
@@ -181,7 +176,6 @@ export const signupPostFetch = user => {
         console.log(data.error)
       }
       else {
-        console.log(data.user)
         localStorage.setItem("token", data.jwt)
         
         dispatch(loginUser(data.user))
@@ -218,7 +212,6 @@ const loginUser = userObject => (
 //////////////////////
 //  user login. GET fetch 
 export const loginFetch = user => {
-  console.log(user)
   return dispatch => {
     return fetch(`${API_ROOT}/login/`, {
       method: "POST",
@@ -233,7 +226,6 @@ export const loginFetch = user => {
         } else {
           localStorage.setItem("token", data.jwt)
           localStorage.setItem("user", data.user.id)
-          console.log(data.user)
           dispatch(loginUser(data.user))
         }
       })

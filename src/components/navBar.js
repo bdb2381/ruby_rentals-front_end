@@ -14,8 +14,6 @@ class Navbar extends React.Component {
 
         // Remove the user object from the Redux store
         this.props.logoutUser()
-
-        console.log("log out from NavBar")
     }
 
     render(){

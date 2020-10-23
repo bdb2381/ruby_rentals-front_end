@@ -17,9 +17,7 @@ class Login extends React.Component {
 
   handleLoginSubmit = (event) => {
     event.preventDefault();
-    
-    console.log("before login fetch")
-    
+        
     this.props.loginFetch(this.state)
         // refactor to catch errors for failed login 
 

@@ -11,7 +11,6 @@ class LoginContainer extends React.Component {
 
 render(){
   let redirect = this.props.history
-  console.log("in login container")
   
   return(
     <div> 
