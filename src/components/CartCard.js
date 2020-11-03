@@ -32,7 +32,7 @@ return(
     <div className="financial">${total_rental_amount} </div>
     
     {/* display "Remove" option if order is final and render blank div for css */}
-    {props.cartStatus != "PURCHASED"
+    {props.cartStatus !== "PURCHASED"
       ? (<div className="remove" onClick={() => props.handleClickRemoveItem(props.item) }> Remove </div>)
       : (<div></div> )
     }

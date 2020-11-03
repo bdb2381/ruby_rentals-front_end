@@ -14,7 +14,7 @@ const CartGridHeader = (props) => {
       <div className="cartHeader">Total</div>
     
       {/* display remove item on if order is final or not. Divs required for spacing */}
-      {props.cartStatus != "PURCHASED" 
+      {props.cartStatus !== "PURCHASED" 
         ? (<div className="cartHeader"> </div>)
         : (<div></div>) 
      }
