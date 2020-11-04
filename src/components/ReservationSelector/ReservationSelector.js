@@ -9,9 +9,15 @@ import {addItemToCart} from '../../redux/actions'
 class ReservationSelector extends React.Component {
   state = {
     // local state for reservation form
-    startDate: "2020-01-01",
-    returnDate: "2020-02-02",
-    numberOfItemsReserved: 0
+    startDate: {
+      date: "2020-01-01",
+      error: false
+    },
+    returnDate:{
+      date: "2020-02-02",
+      error: false
+    },
+      numberOfItemsReserved: 0
   }
 
   
@@ -20,13 +26,14 @@ class ReservationSelector extends React.Component {
       
       let name = event.target.name
       let value = event.target.value
-
-      this.setState((prevState) => (
+ 
+      this.setState({[name]:
         {
-          ...prevState,
-          [name]: value,
+          ...this.state[name],
+          date: value,
+          error: this.state[name].error,
         }
-      ))
+      })
     }
 
   handleDropdownChange(event) { // handle for dropdown. Required since <select> doesn't have a name type
@@ -53,8 +60,8 @@ class ReservationSelector extends React.Component {
     this.props.addItemToCart(
       {
         ...this.props.item, 
-        startDate: this.state.startDate,
-        returnDate: this.state.returnDate,
+        startDate: this.state.startDate.value,
+        returnDate: this.state.returnDate.value,
         numberOfItemsReserved: this.state.numberOfItemsReserved,
         total_rental_amount: this.state.numberOfItemsReserved * item.day_rental_price
       }
@@ -92,6 +99,8 @@ class ReservationSelector extends React.Component {
             onChange={(event) => this.handleChange(event)}
             type="date" 
             name="startDate" 
+            errorMessage="Start date must be 24 hours into the future."
+            error={this.state.startDate.error}
             value={this.props.startDate}/>
         </div>
 
@@ -101,6 +110,8 @@ class ReservationSelector extends React.Component {
             onChange={(event) => this.handleChange(event)}
             type="date" 
             name="returnDate" 
+            errorMessage="Return date must be 24 hours after pickup date."
+            // error={this.state.returnDate.error}
             value={this.props.returnDate}/>
         </div>
 

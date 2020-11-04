@@ -45,7 +45,6 @@ class CartCheckout extends React.Component{
 
 
  displayItemsInCart = () => {
-
   if ( this.props.cartItems.length >= 1) {
 
   return(
