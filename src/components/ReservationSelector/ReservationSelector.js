@@ -6,15 +6,25 @@ import {addItemToCart} from '../../redux/actions'
 // handle logic (dates, amounts) for reservations 
 //////////////
 
-class ReservationSelector extends React.Component {
+class ReservationSelector extends React.Component {  
+  
+startDate = () => {
+  // dynamically set starting to today
+
+  let todaysDate = new Date();
+  todaysDate.setDate(todaysDate.getDate() - 1); // this might create a bug, 
+  let today = todaysDate.toISOString().substr(0, 10);
+
+  return today
+}  
   state = {
     // local state for reservation form
     startDate: {
-      date: "2020-01-01",
+      date: this.startDate(),
       error: false
     },
     returnDate:{
-      date: "2020-02-02",
+      date: "",
       error: false
     },
       numberOfItemsReserved: 0
@@ -87,6 +97,7 @@ class ReservationSelector extends React.Component {
   
   render(){
     // nested ternary statements. Display based on login status and cart status
+    // debugger
 
     return(
     <div className="reservation-container">
@@ -96,12 +107,14 @@ class ReservationSelector extends React.Component {
         <div className="datePicker"> 
           Pickup Date
           <input 
-            onChange={(event) => this.handleChange(event)}
             type="date" 
+            id="startDate"
+            onChange={(event) => this.handleChange(event)}
+            value={this.state.startDate.date}
             name="startDate" 
-            errorMessage="Start date must be 24 hours into the future."
-            error={this.state.startDate.error}
-            value={this.props.startDate}/>
+            onfocus="(this.type='date')"
+            min={this.state.startDate.date}
+            required/>
         </div>
 
         <div className="datePicker">
@@ -110,16 +123,17 @@ class ReservationSelector extends React.Component {
             onChange={(event) => this.handleChange(event)}
             type="date" 
             name="returnDate" 
-            errorMessage="Return date must be 24 hours after pickup date."
-            // error={this.state.returnDate.error}
-            value={this.props.returnDate}/>
+            value={this.state.returnDate.date}
+            required/>
         </div>
 
         <div className="reservationDropdown">
             <label>
               Pick how many {this.props.item.model}:  </label>
             
-            <select onChange={(event) => this.handleDropdownChange(event)}>
+            <select 
+            onChange={(event) => this.handleDropdownChange(event)}
+            required>
               {this.inventoryAvailable()}
             </select>
             <p>
