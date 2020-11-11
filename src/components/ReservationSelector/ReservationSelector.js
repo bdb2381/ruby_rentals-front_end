@@ -8,23 +8,24 @@ import {addItemToCart} from '../../redux/actions'
 
 class ReservationSelector extends React.Component {  
   
-startDate = () => {
-  // dynamically set starting to today
+reservationDate = (dayOffSet) => {
+  // dynamically set default starting and return dates 
 
-  let todaysDate = new Date();
-  todaysDate.setDate(todaysDate.getDate() - 1); // this might create a bug, 
-  let today = todaysDate.toISOString().substr(0, 10);
-
-  return today
+  let today = new Date();
+  
+  today.setDate(today.getDate() -1 + dayOffSet); // minus 1 to ajust for ISOString returning UTC time
+  let date = today.toISOString().substr(0, 10);
+  return date
 }  
+
   state = {
     // local state for reservation form
     startDate: {
-      date: this.startDate(),
+      date: this.reservationDate(0),
       error: false
     },
     returnDate:{
-      date: "",
+      date: this.reservationDate(+1),
       error: false
     },
       numberOfItemsReserved: 0
@@ -120,10 +121,12 @@ startDate = () => {
         <div className="datePicker">
           Return Date
           <input 
-            onChange={(event) => this.handleChange(event)}
             type="date" 
-            name="returnDate" 
+            id="returnDate"
+            onChange={(event) => this.handleChange(event)}
             value={this.state.returnDate.date}
+            name="returnDate" 
+            min={this.state.returnDate.date}
             required/>
         </div>
 
