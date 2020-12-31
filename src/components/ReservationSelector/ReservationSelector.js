@@ -7,15 +7,18 @@ import {addItemToCart} from '../../redux/actions'
 //////////////
 
 class ReservationSelector extends React.Component {  
-  
-reservationDate = (dayOffSet) => {
-  // dynamically set default starting and return dates 
 
-  let today = new Date();
-  
-  today.setDate(today.getDate() -1 + dayOffSet); // minus 1 to ajust for ISOString returning UTC time
-  let date = today.toISOString().substr(0, 10);
-  return date
+  // dynamically set default starting and return dates 
+  reservationDate = (dayOffSet) => {
+
+    let today = new Date();
+    
+    // minus 1 to ajust for ISOString returning UTC time
+    today.setDate(today.getDate() -1 + dayOffSet); 
+    
+    let date = today.toISOString().substr(0, 10);
+    
+    return date
 }  
 
   state = {
@@ -31,8 +34,8 @@ reservationDate = (dayOffSet) => {
       numberOfItemsReserved: 0
   }
 
-  
-  handleChange(event) { // handle change for calender input
+  // handle change for calender input
+  handleChange(event) { 
       event.preventDefault()
       
       let name = event.target.name
@@ -47,8 +50,8 @@ reservationDate = (dayOffSet) => {
       })
     }
 
-  handleDropdownChange(event) { // handle for dropdown. Required since <select> doesn't have a name type
-
+  // handle for dropdown. Required since <select> doesn't have a name type
+  handleDropdownChange(event) { 
     event.preventDefault()
     
     let value = event.target.value
@@ -63,9 +66,10 @@ reservationDate = (dayOffSet) => {
   }
   
 
-  handleSubmit = (event)=>{   // add startDate & endDate to the item Object
-
+  // add startDate & endDate to the item Object
+  handleSubmit = (event)=>{   
     event.preventDefault()
+
     const {item} = this.props
 
     this.props.addItemToCart(
@@ -87,23 +91,23 @@ reservationDate = (dayOffSet) => {
     let numbers = inventory.map((item, i) => {
         return(
           <option 
-          key={i++} 
-          value={i}
-          > {i} </option>
+            key={i++} 
+            value={i}
+          >
+            {i} 
+          </option>
         )
       }
     )
     return numbers
   }
-  
-  render(){
-    // nested ternary statements. Display based on login status and cart status
-    // debugger
 
-    return(
+  // nested ternary statements. Display based on login status and cart status  
+  render(){
+    return (
     <div className="reservation-container">
       {!localStorage.token ? ( "Login to reserve equipment") 
-     :(
+     : (
       <form onSubmit={this.handleSubmit}>
         <div className="datePicker"> 
           Pickup Date
@@ -115,7 +119,8 @@ reservationDate = (dayOffSet) => {
             name="startDate" 
             onfocus="(this.type='date')"
             min={this.state.startDate.date}
-            required/>
+            required
+          />
         </div>
 
         <div className="datePicker">
@@ -127,25 +132,35 @@ reservationDate = (dayOffSet) => {
             value={this.state.returnDate.date}
             name="returnDate" 
             min={this.state.returnDate.date}
-            required/>
+            required
+          />
         </div>
 
         <div className="reservationDropdown">
             <label>
-              Pick how many {this.props.item.model}:  </label>
+              Pick how many {this.props.item.model}:  
+            </label>
             
             <select 
-            onChange={(event) => this.handleDropdownChange(event)}
-            required>
+              onChange={(event) => this.handleDropdownChange(event)}
+              required
+            >
               {this.inventoryAvailable()}
             </select>
             <p>
-              There are {this.props.item.inventory.length} available. 
+              There are 
+                {this.props.item.inventory.length}
+              available. 
           </p>
       </div>
     
       <div className="reservation-button">
-        <input type="submit" name="submit" value="Add To Cart" id="submit" />
+        <input 
+          type="submit" 
+          name="submit" 
+          value="Add To Cart" 
+          id="submit"
+        />
       </div>
     </form>
     )}
@@ -172,5 +187,3 @@ const mapDispatchToProps= (dispatch)=>{
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReservationSelector)
-
-
