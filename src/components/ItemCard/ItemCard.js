@@ -6,7 +6,15 @@ import {Link} from 'react-router-dom'
 ///////////////
 
 const ItemCard = (props) => {
-  const {id, brand, model, size, gear_photo_url, item_type, day_rental_price, } = props.item 
+  const {
+    id, 
+    brand,
+    model, 
+    size, 
+    gear_photo_url, 
+    item_type, 
+    day_rental_price,
+  } = props.item 
   
   const altImageTag = `${brand} ${model} ${size} ${item_type} photo`
 
@@ -16,7 +24,11 @@ const ItemCard = (props) => {
     <Link to={`/gear/${id}`}>
       <div className="card" id={id}>
         <div>
-          <img className="itemPhoto" src={gear_photo_url} alt={altImageTag}/>
+          <img 
+            className="itemPhoto" 
+            src={gear_photo_url} 
+            alt={altImageTag}
+          />
         </div>
 
         <div className="itemContent">
